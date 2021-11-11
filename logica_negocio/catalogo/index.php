@@ -88,7 +88,55 @@
 
             <!-- Comienzo del modal -->
 
-            
+            <div class="modal fade" id="md_registrar_cliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel">Registro nuevo cliente<br>
+                        <div class="alert alert-danger mb-0" role="alert">
+                            <strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¡Importante! </font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Los cambios marcados con * son obligatorios.
+                            </font></font></div>
+                        </h6>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      
+                     <form name="formulario_registro" id="formulario_registro">
+                     <input type="hidden" id="ingreso_datos" name="ingreso_datos" value="si_registro">
+                        <input type="hidden" name="llave_cliente" id="llave_cliente" value="">
+                        
+
+                          <div class="row">
+                            
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Nombre *</label>
+                                <input type="text" autocomplete="off" name="nombre" data-parsley-error-message="Campo requerido" id="nombre" class="form-control" required placeholder="Ingrese su nombre"/>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Apellido *</label>
+                                <input type="text" autocomplete="off" name="apellido" data-parsley-error-message="Campo requerido" id="apellido" class="form-control" required placeholder="Ingrese su apellido"/>
+                              </div>
+                            </div>
+
+
+                          </div>
+                     
+                      
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit"  class="btn btn-primary">Guardar</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
 
         </div>
         <!-- END wrapper -->

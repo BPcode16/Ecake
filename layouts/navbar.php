@@ -29,8 +29,7 @@
             <li class="has_sub">
                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-cake-variant"></i><span> Productos <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                 <ul class="list-unstyled">
-                    <li><a href="../../logica_negocio/catalogo/?modulo=CATALOGO DE PRODUCTOS">Registrar nuevo producto</a></li>
-                    <li><a href="charts-chartist.php">Catalogo de Productos</a></li>
+                    <li><a href="../../logica_negocio/catalogo/?modulo=CATALOGO DE PRODUCTOS">Categoría de pasteles</a></li>
                 </ul>
             </li>
 

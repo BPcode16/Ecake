@@ -16,8 +16,8 @@ if (isset($_POST['consultar_datos']) && $_POST['consultar_datos']=="si_consultal
                         <td>'.$row['nombre'].'</td>
                         <td>'.$row['descripcion'].'</td>
                         <td>
-                        <a href="javascript:void(0)" class="btn_editar" data-id="'.$row['idcliente'].'" style="margin-right: 25px;"><i class="mdi mdi-lead-pencil" title="Editar categoría"></i></a>
-                        <a href="javascript:void(0)" class="text-danger btn_eliminar"  data-id="'.$row['idcliente'].'"><i class="mdi mdi-delete" title="Eliminar categoría"></i></a>
+                        <a href="javascript:void(0)" class="btn_editar" data-id="'.$row['idcategoria'].'" style="margin-right: 25px;"><i class="mdi mdi-lead-pencil" title="Editar categoría"></i></a>
+                        <a href="javascript:void(0)" class="text-danger btn_eliminar"  data-id="'.$row['idcategoria'].'"><i class="mdi mdi-delete" title="Eliminar categoría"></i></a>
                         </td> 
                     </tr>';
             

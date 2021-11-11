@@ -27,7 +27,7 @@ function mostrar_cargando(titulo,mensaje=""){
 }
 
 function CargarDatos(){
-	mostrar_cargando("Cargando datos","")
+	//mostrar_cargando("Cargando datos","")
 	var datos = {"consultar_datos":"si_consultalos"};
 	$.ajax({
 		dataType: "json",
