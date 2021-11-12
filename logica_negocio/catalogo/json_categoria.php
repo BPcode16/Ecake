@@ -99,7 +99,7 @@
             
         }
 
-        $html.='<table id="tabla_categoria" class="table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        $html.='<table id="tabla_categoria" class="table table-bordered " cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th>Nombre de la categoría</th>
