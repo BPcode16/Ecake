@@ -149,6 +149,8 @@ function mostrar_cargando(titulo,mensaje=""){
 	})
 }
 
+
+
 //METODO QUE CARGA LA TABLA
 
 function CargarDatos(){

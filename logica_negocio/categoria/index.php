@@ -124,11 +124,15 @@
                                 <input type="text" autocomplete="off" name="nombre" data-parsley-error-message="Campo requerido" id="nombre" class="form-control" required placeholder="Ingrese el nombre de la categoría"/>
                               </div>
                             </div>
+
+
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label>Descrición *</label>
-                                <input type="text" autocomplete="off" name="descrip" data-parsley-error-message="Campo requerido" id="descrip" class="form-control" required placeholder="Agrega una descripcion a la categoría"/>
-                              </div>
+                                    <label>Descrición *</label>
+                                    <div>
+                                        <textarea required class="form-control" id="descrip" name="descrip" rows="5" data-parsley-error-message="Campo requerido" placeholder="Agrega una descripcion a la categoría"></textarea>
+                                    </div>
+                                </div>
                             </div>
 
 
