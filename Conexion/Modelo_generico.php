@@ -772,6 +772,54 @@
 		}
 
 
+		public static function actualizarAdmin($tabla, $id, $estado){
+			
+
+	 		$sql ="UPDATE $tabla SET administrador = $estado WHERE idempleado = '$id'";//String de update creada
+	 		/*return array("1","2",$sql,$as,$agregando_as);
+	 		exit();*/
+			try {
+				$comando = Conexion::getInstance()->getDb()->prepare($sql);//ejecutro la actualización
+	       		$comando->execute();
+	       		$cuantos = $comando->rowCount();
+	       		return array("1",$id,array("Actualizado",$sql),"",$cuantos);//retorno en caso de exito 
+				//echo json_encode(array("exito" => $exito));
+			} catch (Exception $e) {
+				return array("0","Error al actualizar",$e->getMessage(),$e->getLine(),$sql);//retorno mensajes en caso de error
+			}
+		}
+
+		public static function actualizarActivo($tabla, $id, $estado){
+			
+
+			$sql ="UPDATE $tabla SET estado = $estado WHERE idempleado = '$id'";//String de update creada
+			/*return array("1","2",$sql,$as,$agregando_as);
+			exit();*/
+		   try {
+			   $comando = Conexion::getInstance()->getDb()->prepare($sql);//ejecutro la actualización
+				  $comando->execute();
+				  $cuantos = $comando->rowCount();
+				  return array("1",$id,array("Actualizado",$sql),"",$cuantos);//retorno en caso de exito 
+			   //echo json_encode(array("exito" => $exito));
+		   } catch (Exception $e) {
+			   return array("0","Error al actualizar",$e->getMessage(),$e->getLine(),$sql);//retorno mensajes en caso de error
+		   }
+	   }
+
+	   public static function contarRegistros($tabla){
+			
+
+		$sql ="SELECT count(*) AS conteo FROM $tabla";
+			try{
+				$comando=Conexion::getInstance()->getDb()->prepare($sql);
+				$comando->execute();
+				$result=$comando->fetchAll(PDO::FETCH_ASSOC);
+				$cuantos = $comando->rowCount();
+				return array(1,"exito",$result,"",$cuantos);
+			}catch(Exception $e){
+				return array(-1,"error",$e->getMessage(),$sql);
+			}
+   }
 
 
 	}
