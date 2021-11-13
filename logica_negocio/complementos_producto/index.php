@@ -37,6 +37,18 @@
 
                             <div class="row">
 
+                            <div class="col-md-6 col-xl-12" id="registrar_comp" style="cursor: pointer;">
+                                    <div class="mini-stat clearfix bg-white">
+                                        <span class="mini-stat-icon bg-teal mr-0 float-right"><i class="mdi mdi-library-plus"></i></span>
+                                        <div class="mini-stat-info">
+                                            <span class="counter text-teal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¡Vamos a personalizar más nuestros pasteles!</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                            Clic aquí y agrega nuevas características a tus pasteles.
+                                        </font></font></div>
+                                        <div class="clearfix"></div>
+                                        
+                                    </div>
+                                </div>
+
                                 <div class="col-md-6 col-xl-4">
                                     <div class="mini-stat clearfix bg-white">
                                         <span class="mini-stat-icon bg-blue-grey mr-0 float-right"><i class="mdi mdi-meteor"></i></span>
@@ -73,22 +85,11 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6 col-xl-12" id="registrar_usuario" style="cursor: pointer;">
-                                    <div class="mini-stat clearfix bg-white">
-                                        <span class="mini-stat-icon bg-teal mr-0 float-right"><i class="mdi mdi-database-plus"></i></span>
-                                        <div class="mini-stat-info">
-                                            <span class="counter text-teal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agrega nuevas características</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                            Clic aquí y agrega nuevas características a tus pasteles.
-                                        </font></font></div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-
 
                             </div>
 
                             <div class="row">
-                                <div class="col-md-12 col-xl-6">
+                                <div class="col-md-12 col-xl-12">
                                     <card class="card m-b-20">                                            
                                         <div class="card-body">
                                             <div class="card-body">
@@ -100,7 +101,7 @@
                                     </card>
                                 </div>
 
-                                <div class="col-md-12 col-xl-6">
+                                <div class="col-md-12 col-xl-12">
                                     <card class="card m-b-20">                                            
                                         <div class="card-body">
                                             <div class="card-body">
@@ -112,7 +113,7 @@
                                     </card>
                                 </div>
 
-                                <div class="col-md-12 col-xl-6">
+                                <div class="col-md-12 col-xl-12">
                                     <card class="card m-b-20">                                            
                                         <div class="card-body">
                                             <div class="card-body">
@@ -139,169 +140,92 @@
 
             <!-- Comienzo del modal -->
 
-            <div class="modal fade" id="md_registrar_cliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg" role="document">
+            <div class="modal fade" id="md_registrar_comp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg-6" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h6 class="modal-title" id="exampleModalLabel">Registro nuevo cliente<br>
-                        <div class="alert alert-danger mb-0" role="alert">
-                            <strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¡Importante! </font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Los cambios marcados con * son obligatorios.
-                            </font></font></div>
-                        </h6>
+                  <div class="mini-stat-info">
+                        <span class="counter text-teal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¡Hora de ingresar nuevas características a tus pasteles!</font></font></span>
+                    </div>
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
+
+
+                  <div class="modal-body border border-secondary">
                       
-                     <form name="formulario_registro" id="formulario_registro">
-                     <input type="hidden" id="ingreso_datos" name="ingreso_datos" value="si_registro">
-                        <input type="hidden" name="llave_cliente" id="llave_cliente" value="">
+                     <form name="formulario_registro_relleno" id="formulario_registro_relleno">
+                     <input type="hidden" id="ingreso_datos_relleno" name="ingreso_datos_relleno" value="si_registro">
+                        <input type="hidden" name="llave_relleno" id="llave_relleno" value="">
                         
 
                           <div class="row">
-                            
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Nombre *</label>
-                                <input type="text" autocomplete="off" name="nombre" data-parsley-error-message="Campo requerido" id="nombre" class="form-control" required placeholder="Ingrese su nombre"/>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Apellido *</label>
-                                <input type="text" autocomplete="off" name="apellido" data-parsley-error-message="Campo requerido" id="apellido" class="form-control" required placeholder="Ingrese su apellido"/>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Teléfono *</label>
-                                <input type="text" autocomplete="off" name="telefono" data-parsley-error-message="Campo requerido" id="telefono" class="form-control" required placeholder="Ingrese su telefono"/>
-                              </div>
-                            </div>                            
-
-
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Email <span class="eliminar_obligatorio">*</span></label>
-                                <input type="email"  data-parsley-error-message="Campo requerido" autocomplete="off" name="email" id="email" class="form-control" required placeholder="Ingrese su email"/>
-                              </div>
-                            </div>
-
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Fecha nacimiento *</label>
-                                <input type="text" autocomplete="off" name="fecha" data-parsley-error-message="Campo requerido" id="fecha" class="form-control" required placeholder="Ingrese su fecha"/>
-                              </div>
-                            </div>
-
-
+                            <div class="col-md-6 col-lg-12">
+                                <div class="form-group">
+                                    <label>Ingresa tu nuevo sabor de relleno</label>
+                                        <div class="input-group mb-3">
+                                                <input type="text" autocomplete="off" name="nombre_relleno" data-parsley-error-message="Campo requerido" id="nombre_relleno" class="form-control"  />
+                                                    <div class="input-group-append">
+                                                    <button type="button" name="btn_registro_relleno" id="btn_registro_relleno" class="btn btn-primary"><i class="fa fa-plus" title="Agregar sabor de relleno"></i> </button>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
                           </div>
+                  </div>
+
+
+                  <div class="modal-body border border-secondary">
+                      
+                     <form name="formulario_registro_remojo" id="formulario_registro_remojo">
+                     <input type="hidden" id="ingreso_datos_remojo" name="ingreso_datos_remojo" value="si_registro">
+                        <input type="hidden" name="llave_remojo" id="llave_remojo" value="">
+                        
+
+                        <div class="row">
+                            <div class="col-md-6 col-lg-12">
+                                <div class="form-group">
+                                    <label>Ingresa tu nuevo sabor de remojo</label>
+                                        <div class="input-group mb-3">
+                                                <input type="text" autocomplete="off" name="nombre_remojo" data-parsley-error-message="Campo requerido" id="nombre_remojo" class="form-control"  />
+                                                    <div class="input-group-append">
+                                                    <button type="button" name="btn_registro_remojo" id="btn_registro_remojo" class="btn btn-primary"><i class="fa fa-plus" title="Agregar sabor de remojo"></i> </button>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
                      
                       
                   </div>
 
-                  <div class="modal-body">
+                  <div class="modal-body border border-secondary">
                       
-                     <form name="formulario_registro" id="formulario_registro">
-                     <input type="hidden" id="ingreso_datos" name="ingreso_datos" value="si_registro">
-                        <input type="hidden" name="llave_cliente" id="llave_cliente" value="">
+                     <form name="formulario_registro_sabor" id="formulario_registro_sabor">
+                     <input type="hidden" id="ingreso_datos_sabor" name="ingreso_datos_sabor" value="si_registro">
+                        <input type="hidden" name="llave_sabor" id="llave_sabor" value="">
                         
 
-                          <div class="row">
-                            
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Nombre *</label>
-                                <input type="text" autocomplete="off" name="nombre" data-parsley-error-message="Campo requerido" id="nombre" class="form-control" required placeholder="Ingrese su nombre"/>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Apellido *</label>
-                                <input type="text" autocomplete="off" name="apellido" data-parsley-error-message="Campo requerido" id="apellido" class="form-control" required placeholder="Ingrese su apellido"/>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Teléfono *</label>
-                                <input type="text" autocomplete="off" name="telefono" data-parsley-error-message="Campo requerido" id="telefono" class="form-control" required placeholder="Ingrese su telefono"/>
-                              </div>
-                            </div>                            
-
-
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Email <span class="eliminar_obligatorio">*</span></label>
-                                <input type="email"  data-parsley-error-message="Campo requerido" autocomplete="off" name="email" id="email" class="form-control" required placeholder="Ingrese su email"/>
-                              </div>
-                            </div>
-
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Fecha nacimiento *</label>
-                                <input type="text" autocomplete="off" name="fecha" data-parsley-error-message="Campo requerido" id="fecha" class="form-control" required placeholder="Ingrese su fecha"/>
-                              </div>
-                            </div>
-
-
-                          </div>
-                     
-                      
-                  </div>
-
-                  <div class="modal-body">
-                      
-                     <form name="formulario_registro" id="formulario_registro">
-                     <input type="hidden" id="ingreso_datos" name="ingreso_datos" value="si_registro">
-                        <input type="hidden" name="llave_cliente" id="llave_cliente" value="">
-                        
-
-                          <div class="row">
-                            
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Nombre *</label>
-                                <input type="text" autocomplete="off" name="nombre" data-parsley-error-message="Campo requerido" id="nombre" class="form-control" required placeholder="Ingrese su nombre"/>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Apellido *</label>
-                                <input type="text" autocomplete="off" name="apellido" data-parsley-error-message="Campo requerido" id="apellido" class="form-control" required placeholder="Ingrese su apellido"/>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Teléfono *</label>
-                                <input type="text" autocomplete="off" name="telefono" data-parsley-error-message="Campo requerido" id="telefono" class="form-control" required placeholder="Ingrese su telefono"/>
-                              </div>
-                            </div>                            
-
-
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Email <span class="eliminar_obligatorio">*</span></label>
-                                <input type="email"  data-parsley-error-message="Campo requerido" autocomplete="off" name="email" id="email" class="form-control" required placeholder="Ingrese su email"/>
-                              </div>
-                            </div>
-
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Fecha nacimiento *</label>
-                                <input type="text" autocomplete="off" name="fecha" data-parsley-error-message="Campo requerido" id="fecha" class="form-control" required placeholder="Ingrese su fecha"/>
-                              </div>
-                            </div>
-
-
+                        <div class="row">
+                            <div class="col-md-6 col-lg-12">
+                                <div class="form-group">
+                                    <label>Ingresa tu nuevo sabor de torta</label>
+                                        <div class="input-group mb-3">
+                                                <input type="text" autocomplete="off" name="nombre_sabor" data-parsley-error-message="Campo requerido" id="nombre_sabor" class="form-control"  />
+                                                    <div class="input-group-append">
+                                                    <button type="button" name="btn_registro_sabor" id="btn_registro_sabor" class="btn btn-primary"><i class="fa fa-plus" title="Agregar sabor de tortaa"></i> </button>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
                           </div>
                      
                       
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit"  class="btn btn-primary">Guardar</button>
                     </form>
                   </div>
                 </div>

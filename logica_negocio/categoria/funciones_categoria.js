@@ -28,7 +28,7 @@ $(function(){
 	$(document).on("click", "#registrar_categoria", function(e){
 		e.preventDefault();
 		$("#md_registrar_categoria").modal("show");
-	})
+	});
 
 });
 
@@ -69,8 +69,6 @@ $(document).on("submit", "#formulario_registro", function(e){
 
 $(document).on("click",".btn_editar",function(e){
 	e.preventDefault(); 
-
-	mostrar_cargando("Espere","Obteniendo datos");
 
 	var id = $(this).attr("data-id");
 	console.log("El id es: ",id);

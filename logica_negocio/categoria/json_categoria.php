@@ -10,7 +10,6 @@
             "idcategoria" => $_POST['llave_categoria'],
             "nombre" => $_POST['nombre'],
             "descripcion" => $_POST['descrip'],
-            
         );
 
         $resultado = $modelo->actualizar_generica($array_update);
