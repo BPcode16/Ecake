@@ -6,7 +6,7 @@ $modelo = new Modelo_generico();
 if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_registro") {
 
 
-    $contra = base64_encode($_POST['pass']);
+    $contra = $modelo->encryptPass($_POST['pass']);
 
     $array_insertar = array(
         "table" => "tbl_empleado",
@@ -30,7 +30,7 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_registro") 
 }if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_actualizalo") {
 
 
-    $contra = base64_encode($_POST['pass']);
+    $contra = $modelo->encryptPass($_POST['pass']);
 
     $array_update = array(
         "table" => "tbl_empleado",
@@ -130,9 +130,16 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_registro") 
     }
 } else if (isset($_POST['consultar_info']) && $_POST['consultar_info'] == "si_conid_especifico") {
 
+    $pass ="";
     $resultado = $modelo->get_todos("tbl_empleado", "WHERE idempleado = '" . $_POST['id'] . "'");
+
+    foreach ($resultado[2] as $row) {
+        $pass= $row['pass'];
+    }
+    $passdes = $modelo->decryptPass($pass);
+
     if ($resultado[0] == '1') {
-        print json_encode(array("Exito", $_POST, $resultado[2][0]));
+        print json_encode(array("Exito", $_POST, $resultado[2][0],$passdes));
         exit();
     } else {
         print json_encode(array("Error", $_POST, $resultado));

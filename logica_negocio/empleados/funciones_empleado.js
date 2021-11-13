@@ -131,7 +131,7 @@ function MostrarEditar(idActualizar) {
                 $('#nombre').val(json[2]['nombre']);
                 $('#apellido').val(json[2]['apellido']);
                 $('#correo').val(json[2]['correo']);
-                $('#pass').val(atob(json[2]['pass']));
+                $('#pass').val(json[3]);
                 if (json[2]['administrador'] == 1) {
                     console.log("Estado modal: ", json[2]['administrador']);
                     $("#flexRadioDefault1").prop('checked', true);
