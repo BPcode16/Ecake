@@ -22,6 +22,9 @@
                 <a href="../../logica_negocio/usuarios/?modulo=USUARIOS" class="waves-effect"><i class="mdi mdi-human-greeting"></i><span> Usuarios </span></a>
             </li>
 
+            <li>
+                <a href="../../logica_negocio/ubicaciones/?modulo=UBICACIONES" class="waves-effect"><i class="mdi mdi-human-greeting"></i><span> Usuarios </span></a>
+            </li>
 
             <li class="menu-title">Productos</li>
 

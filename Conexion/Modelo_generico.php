@@ -171,7 +171,7 @@
 	            //echo json_encode(array("error" => $error));
 			}
 		}
-		public static function insertar_query($query){
+		public static function insertar_SQL($query){
 
 			$sql = $query;
 			try {
@@ -181,6 +181,19 @@
 				//echo json_encode(array("exito" => $exito));
 			} catch (Exception $e) {
 				return array("0","error",$e->getMessage(),$e->getLine(),$sql);
+	            //echo json_encode(array("error" => $error));
+			}
+		}
+		public static function insertar_query($query){
+
+			$sql = $query;
+			try {
+				$comando = Conexion::getInstance()->getDb()->prepare($sql);
+	       		$comando->execute();
+	       		return false;
+				//echo json_encode(array("exito" => $exito));
+			} catch (Exception $e) {
+				return true;
 	            //echo json_encode(array("error" => $error));
 			}
 		}
