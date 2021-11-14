@@ -48,7 +48,7 @@
                   <span class="mini-stat-icon bg-blue-grey mr-0 float-right"><i class="mdi mdi-content-copy"></i></span>
                   <div class="mini-stat-info">
                     <span class="counter text-blue-grey">
-                    <div id="empleados_registradas"></div> 
+                      <div id="empleados_registradas"></div>
                     </span>
                     <font style="vertical-align: inherit;">
                       <font style="vertical-align: inherit;">
@@ -114,10 +114,11 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h6 class="modal-title" id="exampleModalLabel"><div id="titulo"></div> <br>
+            <h6 class="modal-title" id="exampleModalLabel">
+              <div id="titulo"></div> <br>
               <div style="font-size: 12px;" class="alert alert-info mb-0" role="alert">
-                <strong >
-                ¡Importante!
+                <strong>
+                  ¡Importante!
                 </strong>
                 Los cambios marcados con * son obligatorios.
               </div>
@@ -202,7 +203,9 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" onclick="Limpiar()" data-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary"><div id="valboton"></div></button>
+            <button type="submit" class="btn btn-primary">
+              <div id="valboton"></div>
+            </button>
             </form>
           </div>
         </div>
