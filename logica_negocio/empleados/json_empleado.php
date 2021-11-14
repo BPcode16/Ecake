@@ -208,4 +208,38 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_registro") 
         print json_encode(array("Error", $_POST, $resultado));
         exit();
     }
+}else if (isset($_POST['registro_duplicado']) && $_POST['registro_duplicado'] == "comprobar") {
+    
+    if ($_POST['paso']=="insert") {
+
+        $resultado = $modelo->get_todos("tbl_empleado", "WHERE correo = '" . $_POST['correo'] . "'");
+
+        if ($resultado[0] == '1' && $resultado[4] > 0) {
+            print json_encode(array("Error", $_POST, $resultado));
+            exit();
+        } else {
+            print json_encode(array("Exito", $_POST, $resultado));
+            exit();
+        } 
+    } else {
+        $encontro="";
+        $sql = "SELECT * FROM tbl_empleado ORDER BY idempleado";
+        $resultadoCorreo = $modelo->get_query($sql);
+        foreach ($resultadoCorreo[2] as $row) {
+            if ($_POST['correo'] == $row['correo'] && $_POST['id']!=$row['idempleado']) {
+                $encontro=$row['correo'];
+            }
+        }
+
+        if ($encontro=="") {
+            print json_encode(array("Exito", $_POST, $resultado));
+            exit();
+        } else {
+            print json_encode(array("Error", $_POST, $resultado));
+            exit();
+        } 
+    }
+    
+
+    
 }

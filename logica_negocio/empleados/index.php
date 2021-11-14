@@ -82,10 +82,6 @@
               </div>
             </div>
 
-
-
-
-
             <div class="row">
               <div class="col-12">
                 <card class="card m-b-20">
@@ -133,6 +129,7 @@
             <form name="formulario_registro" id="formulario_registro">
               <input type="hidden" id="ingreso_datos" name="ingreso_datos" value="si_registro">
               <input type="hidden" name="llave_empleado" id="llave_empleado" value="">
+              <input type="hidden" name="validar" id="validar" value="">
 
               <div class="row">
                 <div class="col-md-6">

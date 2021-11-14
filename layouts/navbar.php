@@ -22,6 +22,10 @@
                 <a href="../../logica_negocio/usuarios/?modulo=USUARIOS" class="waves-effect"><i class="mdi mdi-human-greeting"></i><span> Usuarios </span></a>
             </li>
 
+            <li>
+                <a href="../../logica_negocio/empleados/?modulo=EMPLEADOS" class="waves-effect"><i class="mdi mdi-account"></i><span> Empleados </span></a>
+            </li>
+
 
             <li class="menu-title">Productos</li>
 

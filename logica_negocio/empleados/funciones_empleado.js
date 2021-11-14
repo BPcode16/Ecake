@@ -1,7 +1,7 @@
 $(function() {
 
     console.log("JQuery si esta funcionando");
-
+    $("#flexRadioDefault2").prop('checked', true);
     CargarDatos();
     conteo();
 
@@ -9,6 +9,7 @@ $(function() {
         e.preventDefault();
         $('#llave_empleado').val(0);
         $('#ingreso_datos').val("si_registro");
+        $("#flexRadioDefault2").prop('checked', true);
         document.getElementById('titulo').innerHTML = 'Registrar empleado';
         document.getElementById('valboton').innerHTML = 'Guardar';
         LimpiarBasura();
@@ -67,48 +68,9 @@ $(function() {
             //Saber si es inser o update
             if ($('#llave_empleado').val() == 0) {
                 //Agregar Datos
-                //mostrar_cargando("Procesando solicitud", "Espere mientras se almacenan los datos")
-                var datos = $("#formulario_registro").serialize();
-                console.log("Datos: ", datos);
-                $.ajax({
-                    dataType: "json",
-                    method: "POST",
-                    url: "json_empleado.php",
-                    data: datos,
-                    success: function(json) {
-                        console.log("Datos consultados antes de if: ", json);
-                        if (json[0] == "Exito") {
-                            Limpiar();
-                            toastify("¡Acción Realizada!\nRegistro guardado con exito", 1);
-                            conteo();
-                            CargarDatos();
-                        } else {
-                            toastify("¡Acción Fallida!\nRegistro no se pudo guardar", 2);
-                        }
-
-                    }
-                });
+                ValidarCorreo(CorreoAdd, $('#llave_empleado').val(), "insert");
             } else {
-                //actualizar
-                var datos = $("#formulario_registro").serialize();
-                console.log("Datos: ", datos);
-                $.ajax({
-                    dataType: "json",
-                    method: "POST",
-                    url: "json_empleado.php",
-                    data: datos,
-                    success: function(json) {
-                        console.log("Datos consultados antes de if: ", json);
-                        if (json[0] == "Exito") {
-                            Limpiar();
-                            toastify("¡Acción Realizada!\nRegistro modificado con exito", 1);
-                            CargarDatos();
-                        } else {
-                            toastify("¡Acción Fallida!\nRegistro no se pudo modificar", 2);
-                        }
-
-                    }
-                });
+                ValidarCorreo(CorreoAdd, $('#llave_empleado').val(), "update");
             }
 
         }
@@ -133,7 +95,6 @@ function MostrarEditar(idActualizar) {
                 $('#correo').val(json[2]['correo']);
                 $('#pass').val(json[3]);
                 if (json[2]['administrador'] == 1) {
-                    console.log("Estado modal: ", json[2]['administrador']);
                     $("#flexRadioDefault1").prop('checked', true);
                 } else {
                     $("#flexRadioDefault2").prop('checked', true);
@@ -150,6 +111,69 @@ function MostrarEditar(idActualizar) {
     $('#md_registrar_empleado').modal('show');
 }
 
+function ValidarCorreo(correo, id, paso) {
+    var datos = "";
+    if (paso == "insert") {
+        datos = { "registro_duplicado": "comprobar", "paso": paso, "correo": correo };
+    } else {
+        datos = { "registro_duplicado": "comprobar", "paso": paso, "correo": correo, "id": id };
+    }
+    $.ajax({
+        dataType: "json",
+        method: "POST",
+        url: "json_empleado.php",
+        data: datos,
+        success: function(json) {
+            if (json[0] == "Exito") {
+                ejecutarBase();
+            } else {
+                toastify("Correo ya es utilizado por otro registro", 2);
+            }
+        }
+    });
+}
+
+function ejecutarBase() {
+
+    if ($('#llave_empleado').val() == 0) {
+        var datos = $("#formulario_registro").serialize();
+        $.ajax({
+            dataType: "json",
+            method: "POST",
+            url: "json_empleado.php",
+            data: datos,
+            success: function(json) {
+                if (json[0] == "Exito") {
+                    Limpiar();
+                    toastify("¡Acción Realizada!\nRegistro guardado con exito", 1);
+                    conteo();
+                    CargarDatos();
+                } else {
+                    toastify("¡Acción Fallida!\nRegistro no se pudo guardar", 2);
+                }
+
+            }
+        });
+    } else {
+        var datos = $("#formulario_registro").serialize();
+        $.ajax({
+            dataType: "json",
+            method: "POST",
+            url: "json_empleado.php",
+            data: datos,
+            success: function(json) {
+                if (json[0] == "Exito") {
+                    Limpiar();
+                    toastify("¡Acción Realizada!\nRegistro modificado con exito", 1);
+                    CargarDatos();
+                } else {
+                    toastify("¡Acción Fallida!\nRegistro no se pudo modificar", 2);
+                }
+
+            }
+        });
+    }
+}
 
 
 function CargarDatos() {
@@ -161,8 +185,6 @@ function CargarDatos() {
         url: "json_empleado.php",
         data: datos,
         success: function(json) {
-
-            console.log("Datos consultados: ", json);
             if (json[0] == "Exito") {
                 //Swal.close();
                 $("#aqui_tabla").empty().html(json[1]); //llena la tabla
@@ -186,8 +208,6 @@ function conteo() {
 
 
             if (json[0] == "Exito") {
-                //Swal.close();
-                console.log("cantidad: ", json);
                 $("#empleados_registradas").empty().html(json[2]['conteo']); //llena la tabla
             }
 
@@ -196,7 +216,6 @@ function conteo() {
 }
 
 function estadoAdmin(idestado) {
-    console.log("id: " + idestado);
     if (idestado != 0) {
         var nombre = "";
         var apellido = "";
@@ -207,7 +226,6 @@ function estadoAdmin(idestado) {
             url: 'json_empleado.php',
             data: datos,
             success: function(json) {
-                console.log("EL consultar especifico", json);
                 if (json[0] == "Exito") {
                     nombre = json[2]['nombre'];
                     apellido = json[2]['apellido'];
@@ -232,14 +250,12 @@ function estadoAdmin(idestado) {
 
             if (estadocheck === 1) {
                 var datos = { "actualizar_estados": "paso_admin", "administrador": 1, "id": idestado }
-                console.log("Entro a 1");
                 $.ajax({
                     dataType: "json",
                     method: "POST",
                     url: 'json_empleado.php',
                     data: datos,
                     success: function(json) {
-                        console.log("EL consultar especifico", json);
                         if (json[0] == "Exito") {
                             toastify(nombre + " " + apellido + " ahora es Administrador", 1);
                             CargarDatos();
@@ -250,14 +266,12 @@ function estadoAdmin(idestado) {
                 });
             } else {
                 var datos = { "actualizar_estados": "paso_admin", "administrador": 0, "id": idestado }
-                console.log("Entro a 0");
                 $.ajax({
                     dataType: "json",
                     method: "POST",
                     url: 'json_empleado.php',
                     data: datos,
                     success: function(json) {
-                        console.log("EL consultar especifico", json);
                         if (json[0] == "Exito") {
                             toastify(nombre + " " + apellido + " ya NO es Administrador", 0);
                             CargarDatos();
@@ -272,7 +286,6 @@ function estadoAdmin(idestado) {
 }
 
 function estadoActivo(idestado) {
-    //console.log("id: " + idestado);
     if (idestado != 0) {
         var nombreA = "";
         var apellidoA = "";
@@ -284,7 +297,6 @@ function estadoActivo(idestado) {
             url: 'json_empleado.php',
             data: datos,
             success: function(json) {
-                console.log("EL consultar especifico", json);
                 if (json[0] == "Exito") {
                     nombreA = json[2]['nombre'];
                     apellidoA = json[2]['apellido'];
@@ -295,7 +307,6 @@ function estadoActivo(idestado) {
             }
         });
 
-        console.log("id actual: " + idestado);
         var datos = { "actualizar_estados": "paso_activo", "id": idestado }
         $.ajax({
             dataType: "json",
@@ -303,7 +314,6 @@ function estadoActivo(idestado) {
             url: 'json_empleado.php',
             data: datos,
             success: function(json) {
-                console.log("EL consultar Activo", json);
                 if (json[0] == "Exito") {
                     if (estado == 1) {
 
@@ -359,7 +369,6 @@ function confirEliminarEmpleado(idActualizar) {
 }
 
 function Eliminar(idEliminar) {
-    console.log("id actual: " + idEliminar);
     var datos = { "eliminar_datos": "si_eliminalo", "id": idEliminar }
     $.ajax({
         dataType: "json",
@@ -372,7 +381,7 @@ function Eliminar(idEliminar) {
                 toastify("¡Acción Realiza!\nRegistro eliminado con exito", 1);
                 CargarDatos();
             } else {
-                toastify("¡Acción Fallida!\nNo se pudo eliminar", 2);
+                toastify("¡Acción no permitida!\nEs posible que este empleado este asociado a otro registro", 2);
             }
         }
     });
