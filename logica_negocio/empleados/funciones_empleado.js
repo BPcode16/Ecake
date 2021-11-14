@@ -79,6 +79,7 @@ $(function() {
 
 
 function MostrarEditar(idActualizar) {
+    LimpiarBasura();
     $('#llave_empleado').val(idActualizar);
     var datos = { "consultar_info": "si_conid_especifico", "id": idActualizar }
     $.ajax({
