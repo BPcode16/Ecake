@@ -239,9 +239,7 @@
   <!-- sweet Alert -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <!-- toastify alert -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
+  
   <script src="funciones_empleado.js"></script>
   <script src="../validaciones/validar_input.js"></script>
 
