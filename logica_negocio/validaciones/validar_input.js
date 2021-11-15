@@ -1,5 +1,10 @@
-function soloLetras(texto) {
+function soloLetrasSintildes(texto) {
     var regex = /^[a-zA-Z ]+$/;
+    return regex.test(texto);
+}
+
+function soloLetras(texto) {
+    var regex = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g;
     return regex.test(texto);
 }
 
