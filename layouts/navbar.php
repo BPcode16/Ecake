@@ -23,7 +23,11 @@
             </li>
 
             <li>
-                <a href="../../logica_negocio/ubicaciones/?modulo=UBICACIONES" class="waves-effect"><i class="mdi mdi-human-greeting"></i><span> Usuarios </span></a>
+                <a href="../../logica_negocio/ubicaciones/?modulo=UBICACIONES" class="waves-effect"><i class="mdi mdi-map-marker"></i><span> Ubicaciones </span></a>
+            </li>
+
+            <li>
+                <a href="../../logica_negocio/presentaciones/?modulo=PRESENTACIONES" class="waves-effect"><i class="mdi mdi-cake-layered"></i><span> Presentaciones </span></a>
             </li>
 
             <li class="menu-title">Productos</li>
