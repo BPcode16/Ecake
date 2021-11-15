@@ -11,9 +11,30 @@
 		$file_path = "imagenes_producto/".$name;
 		try {
 			$mover = move_uploaded_file($_FILES['file-0']['tmp_name'], $file_path);
-			 
-				 print json_encode(array("Exito",$mover));
-				 exit();
+
+            //Aqui hacemos la actualizacion a la base y le asignamos la imagen
+            $array_update = array(
+            
+
+                "table" => "tbl_productos",
+                "idproducto" => $_GET['id'],
+                "imagenprincipal" => $file_path,
+                
+            );
+    
+            $resultado = $modelo->actualizar_generica($array_update);
+
+            if($resultado[0]=='1' && $resultado[4]>0){
+
+                print json_encode(array("Exito",$mover, $resultado));
+                exit();
+    
+            }else{
+    
+                print json_encode(array("Error",$mover,$resultado));
+                exit();
+    
+            }
 			 
 		} catch (Exception $e) {
 			print json_encode(array("Error",$e));
