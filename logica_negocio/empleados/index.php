@@ -4,8 +4,6 @@
 <link href="../../public/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
 
 <link href="../../public/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
-<!-- Check Admin -->
-<link rel="stylesheet" href="../../public/assets/css/custom.css">
 
 <?php include '../../layouts/headerStyle.php'; ?>
 
