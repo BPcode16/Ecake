@@ -4,11 +4,6 @@
 <link href="../../public/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
 
 <link href="../../public/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
-<!-- Check Admin -->
-<link rel="stylesheet" href="../../public/assets/css/custom.css">
-
-<!-- Alertas -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 <!-- Magnific popup -->
 <link href="../../public/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
 
@@ -162,12 +157,7 @@
       <script src="../../public/assets/js/app.js"></script>
 
       <!-- Parsley js -->
-
       <script src="../../public/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-
-      <!-- sweet Alert -->
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 
       <script src="funciones_empresa.js"></script>
       <script src="../validaciones/validar_input.js"></script>
