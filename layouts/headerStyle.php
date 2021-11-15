@@ -9,3 +9,18 @@
 <!-- Responsive datatable examples -->
 <link href="../../public/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 </head>
+
+<style>
+	body.modal-open {
+        overflow: hidden;
+        position:fixed;
+        width: 100%;
+    }
+
+    .dataTables_filter {
+	    float: right;
+	}
+	.dataTables_paginate {
+	    float: right;
+	}
+</style>

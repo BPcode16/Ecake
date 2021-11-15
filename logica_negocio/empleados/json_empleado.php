@@ -105,8 +105,7 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_registro") 
                     </tr>';
             $contador++;
         }
-
-        $html .= '<table id="tabla_empleado" class="table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        $html.='<table id="tabla_empleado" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th>Apellido</th>

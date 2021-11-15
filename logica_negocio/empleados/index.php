@@ -82,16 +82,20 @@
               </div>
             </div>
 
+            <!-- Comienza el datatable -->
             <div class="row">
               <div class="col-12">
-                <card class="card m-b-20">
+                <div class="card m-b-20">
                   <div class="card-body">
-                    <div id="aqui_tabla">
+
+                    <div id="aqui_tabla" class="table">
                     </div>
+
+
                   </div>
-                </card>
-              </div>
-            </div>
+                </div>
+              </div> <!-- end col -->
+            </div> <!-- end row -->
 
           </div><!-- container -->
 
@@ -239,7 +243,7 @@
   <!-- sweet Alert -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  
+
   <script src="funciones_empleado.js"></script>
   <script src="../validaciones/validar_input.js"></script>
 
