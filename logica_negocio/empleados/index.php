@@ -7,10 +7,6 @@
 <!-- Check Admin -->
 <link rel="stylesheet" href="../../public/assets/css/custom.css">
 
-<!-- Alertas -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-
-
 <?php include '../../layouts/headerStyle.php'; ?>
 
 
@@ -245,7 +241,7 @@
 
 
   <script src="funciones_empleado.js"></script>
-  <script src="../validaciones/validar_input.js"></script>
+  <!-- <script src="../validaciones/validar_input.js"></script> -->
 
 
 </body>

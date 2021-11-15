@@ -31,25 +31,15 @@ $(function() {
             $('#nombre').focus();
             $('#nombre').css("background", "#fb6e893b").fadeIn(3000);
         } else if (emailAdd.length < 3 && !reg.test(CorreoAdd)) {
-            toastify("Campo Email vacío", 2);
+            toastify("Campo email vacío", 2);
             $('#nombre').css("background", "#fff");
             $('#email').focus();
             $('#email').css("background", "#fb6e893b").fadeIn(3000);
-        } else if (soloLetras(emailAdd) == false) {
-            toastify("Ingrese solo letras en el campo Email", 2);
+        } else if (CorreoAdd(emailAdd) == false) {
+            toastify("Ingrese un email correcto", 2);
             $('#nombre').css("background", "#fff");
             $('#email').focus();
             $('#email').css("background", "#fb6e893b").fadeIn(3000);
-        } else if (CorreoAdd.length < 3 && !reg.test(CorreoAdd)) {
-            toastify("Ingrese un correo correcto", 2);
-            $('#apellido').css("background", "#fff");
-            $('#correo').focus();
-            $('#correo').css("background", "#fb6e893b").fadeIn(3000);
-        } else if (soloCorreo(CorreoAdd) == false) {
-            toastify("Ingrese un correo correcto", 2);
-            $('#apellido').css("background", "#fff");
-            $('#correo').focus();
-            $('#correo').css("background", "#fb6e893b").fadeIn(3000);
         } else if (ContraseñaAdd.length < 3) {
             toastify("Ingrese una contraseña correcta", 2);
             $('#correo').css("background", "#fff");

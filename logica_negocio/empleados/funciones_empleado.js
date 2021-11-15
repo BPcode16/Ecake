@@ -65,7 +65,7 @@ $(function() {
             $('#pass').focus();
             $('#pass').css("background", "#fb6e893b").fadeIn(3000);
         } else if (soloContrasena(ContraseñaAdd) == false) {
-            toastify("Ingrese una contraseña de acuerdo a las politicas\n\n- Minimo 8 caracteres\n- Maximo 15 caracteres\n- Al menos una letra mayúscula\n- Al menos una letra minuscula\n- Al menos un dígito\n- No espacios en blanco\n- Al menos 1 caracter especial", 2);
+            toastify("Ingrese una contraseña de acuerdo a las politicas\n\n- Minimo 8 caracteres\n- Maximo 20 caracteres\n- Al menos una letra mayúscula\n- Al menos una letra minuscula\n- Al menos un dígito\n- No espacios en blanco\n- Al menos 1 caracter especial", 2);
             $('#correo').css("background", "#fff");
             $('#pass').focus();
             $('#pass').css("background", "#fb6e893b").fadeIn(3000);

@@ -8,6 +8,9 @@
 <link href="../../public/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 <!-- Responsive datatable examples -->
 <link href="../../public/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<!-- Alertas -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 </head>
 
 <style>
