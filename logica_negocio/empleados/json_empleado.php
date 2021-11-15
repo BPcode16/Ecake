@@ -228,6 +228,7 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_registro") 
         } 
     } else {
         $encontro="";
+        $resultado = "";
         $sql = "SELECT * FROM tbl_empleado ORDER BY idempleado";
         $resultadoCorreo = $modelo->get_query($sql);
         foreach ($resultadoCorreo[2] as $row) {
