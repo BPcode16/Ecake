@@ -38,6 +38,7 @@
                    <li class="has_sub">
                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-cake-variant"></i><span> Productos <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                        <ul class="list-unstyled">
+                           <li><a href="../../logica_negocio/producto/?modulo=REGISTRA TUS PRODUCTOS">Registra tus pasteles</a></li>
                            <li><a href="../../logica_negocio/categoria/?modulo=CATEGORIA DE PRODUCTOS">Categoría de pasteles</a></li>
                            <li><a href="../../logica_negocio/complementos_producto/?modulo=CARACTERISTICAS DE TUS PRODUCTOS">Características de los pasteles</a></li>
                        </ul>

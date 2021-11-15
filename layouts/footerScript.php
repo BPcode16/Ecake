@@ -19,3 +19,5 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <!-- sweet Alert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="../../public/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js"></script>
