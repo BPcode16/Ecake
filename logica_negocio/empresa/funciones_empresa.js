@@ -30,41 +30,68 @@ $(function() {
             toastify("Ingrese solo letras en el campo Nombre", 2);
             $('#nombre').focus();
             $('#nombre').css("background", "#fb6e893b").fadeIn(3000);
-        } else if (emailAdd.length < 3 && !reg.test(CorreoAdd)) {
+        } else if (emailAdd.length < 3 && !reg.test(emailAdd)) {
             toastify("Campo email vacío", 2);
             $('#nombre').css("background", "#fff");
             $('#email').focus();
             $('#email').css("background", "#fb6e893b").fadeIn(3000);
-        } else if (CorreoAdd(emailAdd) == false) {
+        } else if (soloCorreo(emailAdd) == false) {
             toastify("Ingrese un email correcto", 2);
             $('#nombre').css("background", "#fff");
             $('#email').focus();
             $('#email').css("background", "#fb6e893b").fadeIn(3000);
-        } else if (ContraseñaAdd.length < 3) {
-            toastify("Ingrese una contraseña correcta", 2);
-            $('#correo').css("background", "#fff");
-            $('#pass').focus();
-            $('#pass').css("background", "#fb6e893b").fadeIn(3000);
-        } else if (soloContrasena(ContraseñaAdd) == false) {
-            toastify("Ingrese una contraseña de acuerdo a las politicas\n\n- Minimo 8 caracteres\n- Maximo 15 caracteres\n- Al menos una letra mayúscula\n- Al menos una letra minuscula\n- Al menos un dígito\n- No espacios en blanco\n- Al menos 1 caracter especial", 2);
-            $('#correo').css("background", "#fff");
-            $('#pass').focus();
-            $('#pass').css("background", "#fb6e893b").fadeIn(3000);
+        } else if (horarioAdd.length > 200) {
+            toastify("Campo horario sobrepaso el limite de 200 caracteres", 2);
+            $('#email').css("background", "#fff");
+            $('#horario').focus();
+            $('#horario').css("background", "#fb6e893b").fadeIn(3000);
+        } else if (direccionAdd.length > 200) {
+            toastify("Campo horario sobrepaso el limite de 200 caracteres", 2);
+            $('#horario').css("background", "#fff");
+            $('#direccion').focus();
+            $('#direccion').css("background", "#fb6e893b").fadeIn(3000);
         } else {
-            //Saber si es inser o update
-            if ($('#llave_empleado').val() == 0) {
-                //Agregar Datos
-                ValidarCorreo(CorreoAdd, $('#llave_empleado').val(), "insert");
-            } else {
-                ValidarCorreo(CorreoAdd, $('#llave_empleado').val(), "update");
-            }
+            var datos = $("#formulario_registro").serialize();
+            $.ajax({
+                dataType: "json",
+                method: "POST",
+                url: "json_empresa.php",
+                data: datos,
+                success: function(json) {
+                    if (json[0] == "Exito") {
+                        toastify("¡Acción Realizada!\nDatos guardados con exito", 1);
+                        CargarDatos();
+                        $('#nombre').css("background", "#4AC18E3b").fadeIn(3000);
+                        $('#email').css("background", "#4AC18E3b").fadeIn(3000);
+                        $('#telefono').css("background", "#4AC18E3b").fadeIn(3000);
+                        $('#horario').css("background", "#4AC18E3b").fadeIn(3000);
+                        $('#logo').css("background", "#4AC18E3b").fadeIn(3000);
+                        $('#direccion').css("background", "#4AC18E3b").fadeIn(3000);
 
+                        esperar();
+                    } else {
+                        toastify("¡Acción Fallida!\nDatos no se pudieron modificar", 2);
+                    }
+
+                }
+            });
         }
     });
 });
 
+function esperar() {
+    setTimeout(function() {
+        console.log("I am the third log after 5 seconds");
+        $('#nombre').css("background", "#fff");
+        $('#email').css("background", "#fff");
+        $('#telefono').css("background", "#fff");
+        $('#horario').css("background", "#fff");
+        $('#logo').css("background", "#fff");
+        $('#direccion').css("background", "#fff");
+    }, 3000);
+}
+
 function CargarDatos() {
-    //mostrar_cargando("Cargando datos","")
     var datos = { "consultar_datos": "si_consultalos" };
     $.ajax({
         dataType: "json",
@@ -85,24 +112,6 @@ function CargarDatos() {
 
         }
     });
-}
-
-
-function Limpiar() {
-    //$('#Id-icon').val("");
-    $('#md_registrar_empleado').modal('hide');
-    $('#nombre').val("");
-    $('#apellido').val("");
-    $('#correo').val("");
-    $('#pass').val("");
-    $('#correo').css("background", "#fff");
-    $('#nombre').css("background", "#fff");
-    $('#Apellido-icon').css("background", "#fff");
-    $('#pass').css("background", "#fff");
-    $('#correo').css("background", "#fff");
-    $('#admin-icon').prop('checked', false);
-    document.getElementById('titulo').innerHTML = 'Registrar empleado';
-    document.getElementById('valboton').innerHTML = 'Guardar';
 }
 
 function LimpiarBasura() {

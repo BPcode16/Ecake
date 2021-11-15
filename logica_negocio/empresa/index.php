@@ -66,13 +66,13 @@
                           <div class="form-group">
                             <label>Nombre *</label>
                             <div>
-                              <input type="text" class="form-control" placeholder="Ecake" id="nombre" name="nombre" />
+                              <input type="text" class="form-control" placeholder="Ecake" id="nombre" name="nombre" maxlength="50"/>
                             </div>
                           </div>
                           <div class="form-group">
                             <label>Email *</label>
                             <div>
-                              <input type="email" class="form-control" placeholder="ecake@gmail.com" id="email" name="email" />
+                              <input type="text" class="form-control" placeholder="ecake@gmail.com" id="email" name="email"  maxlength="60"/>
                             </div>
                           </div>
                           <div class="form-group m-b-0">
@@ -87,7 +87,7 @@
                           <div class="form-group">
                             <label>Horario</label>
                             <div>
-                              <textarea required class="form-control" rows="4" id="horario" name="horario"></textarea>
+                              <textarea class="form-control" rows="4" id="horario" name="horario"  maxlength="200"></textarea>
                             </div>
                           </div>
                         </div>
@@ -95,7 +95,7 @@
                           <div class="form-group">
                             <label>Telefono</label>
                             <div>
-                              <input type="text" class="form-control" placeholder="9999-9999" id="telefono" name="telefono" />
+                              <input type="text" class="form-control" placeholder="9999-9999" id="telefono" name="telefono"  maxlength="9"/>
                             </div>
                           </div>
                           <div class="form-group">
@@ -109,7 +109,7 @@
                           <div class="form-group">
                             <label>Direccón</label>
                             <div>
-                              <textarea required class="form-control" rows="4" id="direccion" name="direccion"></textarea>
+                              <textarea class="form-control" rows="4" id="direccion" name="direccion"  maxlength="200"></textarea>
                             </div>
                           </div>
 

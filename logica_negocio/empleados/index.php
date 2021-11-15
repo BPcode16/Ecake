@@ -134,7 +134,7 @@
                   <div class="form-group">
                     <label for="nombre">Nombre *</label>
                     <div class="position-relative">
-                      <input type="text" class="form-control" placeholder="Juan Carlos" id="nombre" name="nombre" maxlength="50">
+                      <input type="text" class="form-control" placeholder="Juan Carlos" id="nombre" name="nombre" maxlength="60">
                       <div class="form-control-icon">
                         <i class="bi bi-person"></i>
                       </div>
@@ -146,7 +146,7 @@
                   <div class="form-group">
                     <label for="apellido">Apellido *</label>
                     <div class="position-relative">
-                      <input type="text" class="form-control" placeholder="Perez Soza" id="apellido" name="apellido" maxlength="50">
+                      <input type="text" class="form-control" placeholder="Perez Soza" id="apellido" name="apellido" maxlength="60">
                       <div class="form-control-icon">
                         <i class="bi bi-person"></i>
                       </div>
@@ -157,7 +157,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="correo">Correo *</label>
-                    <input type="text" class="form-control" placeholder="jose145@gmail.com" id="correo" name="correo" maxlength="75">
+                    <input type="text" class="form-control" placeholder="jose145@gmail.com" id="correo" name="correo" maxlength="60">
                   </div>
                 </div>
 

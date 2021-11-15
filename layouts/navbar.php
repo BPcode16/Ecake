@@ -26,9 +26,12 @@
                        <a href="../../logica_negocio/ubicaciones/?modulo=UBICACIONES" class="waves-effect"><i class="mdi mdi-human-greeting"></i><span> Ubicaciones </span></a>
                    </li>
                    <li>
-                       <a href="../../logica_negocio/empleados/?modulo=EMPLEADOS" class="waves-effect"><i class="mdi mdi-account"></i><span> Empleados </span></a>
+                       <a href="../../logica_negocio/empleados/?modulo=EMPLEADOS" class="waves-effect"><i class="mdi mdi-worker"></i><span> Empleados </span></a>
                    </li>
 
+                   <li>
+                       <a href="../../logica_negocio/empresa/?modulo=EMPRESA" class="waves-effect"><i class="mdi mdi-briefcase "></i><span> Mi empresa </span></a>
+                   </li>
                    <li class="menu-title">Productos</li>
 
 
