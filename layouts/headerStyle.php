@@ -10,7 +10,8 @@
 <link href="../../public/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 <!-- Alertas -->
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-
+<!-- Check Admin -->
+<link rel="stylesheet" href="../../public/assets/css/custom.css">
 </head>
 
 <style>
