@@ -29,6 +29,12 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_registro") 
     }
 }if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_actualizalo") {
 
+    $estadoObtenido = -1;
+    $resultadoId = $modelo->get_todos("tbl_empleado", "WHERE idempleado = '" . $_POST['llave_empleado'] . "'");
+
+    foreach ($resultadoId[2] as $row) {
+        $estadoObtenido= $row['estado'];
+    }
 
     $contra = $modelo->encryptPass($_POST['pass']);
 
@@ -39,7 +45,7 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_registro") 
         "apellido" => $_POST['apellido'],
         "correo" => $_POST['correo'],
         "pass" => $contra,
-        "estado" => 1,
+        "estado" => $estadoObtenido,
         "administrador" => $_POST['administrador'],
         "idempresa" => 1
     );

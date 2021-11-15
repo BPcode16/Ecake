@@ -47,19 +47,81 @@
                 <div class="card m-b-20">
                   <div class="card-body">
 
-                    <h4 class="mt-0 header-title">Configuración de la empresa</h4>
-                    <p class="text-muted m-b-30 font-14">Aquí podrá personalizar su ecommerce.</p>
+                    <h4 class="text-center mt-0 header-title">Configuración de la empresa</h4>
+                    <p class=" text-center m-0text-muted m-b-30 font-14">Aquí podrá personalizar su ecommerce.</p>
 
-                    <div class="row">
-                      <div class="col-6">
-                        <h5 class="mt-0 font-14 m-b-15 text-muted">Logo</h5>
-                        <a class="image-popup-no-margins" href="../../public/assets/images/base/logo4.png">
-                          <img class="img-responsive" src="../../public/assets/images/base/logo4.png" width="145">
-                        </a>
-                        <p class="mt-2 mb-0 font-14 text-muted">Click para zoom a la ímagen</p>
+                    <form name="formulario_registro" id="formulario_registro">
+                      <div class="row">
+                        <div class="col-12">
+                          <h3 class="text-center m-0">
+                            <a class="image-popup-no-margins" href="../../public/assets/images/base/logo4.png">
+                              <img class="text-center m-0 img-responsive" src="../../public/assets/images/base/logo4.png" width="165">
+                            </a>
+                          </h3>
+                        </div>
                       </div>
-                    </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-3">
+
+                          <input type="hidden" id="ingreso_datos" name="ingreso_datos" value="si_actualizalo">
+                          <input type="hidden" name="llave_empresa" id="llave_empresa" value="">
+                          <input type="hidden" name="validar" id="validar" value="">
+
+                          <div class="form-group">
+                            <label>Nombre *</label>
+                            <div>
+                              <input type="text" class="form-control" placeholder="Ecake" id="nombre" name="nombre" />
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label>Email *</label>
+                            <div>
+                              <input type="email" class="form-control" placeholder="ecake@gmail.com" id="email" name="email" />
+                            </div>
+                          </div>
+                          <div class="form-group m-b-0">
+                              <div>
+                                <button type="submit" class="btn btn-primary waves-effect waves-light m-r-5">
+                                  Guardar
+                                </button>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                          <div class="form-group">
+                            <label>Horario</label>
+                            <div>
+                              <textarea required class="form-control" rows="4" id="horario" name="horario"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-3">
+                          <div class="form-group">
+                            <label>Telefono</label>
+                            <div>
+                              <input type="text" class="form-control" placeholder="9999-9999" id="telefono" name="telefono" />
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label>Logo</label>
+                            <div>
+                              <input type="text" class="form-control" id="logo" name="logo" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-3">
+                          <div class="form-group">
+                            <label>Direccón</label>
+                            <div>
+                              <textarea required class="form-control" rows="4" id="direccion" name="direccion"></textarea>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
                   </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -69,111 +131,6 @@
 
         </div>
         <!-- End Right content here -->
-
-        <!-- Comienzo del modal -->
-
-        <div class="modal fade" id="md_registrar_empleado" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h6 class="modal-title" id="exampleModalLabel">
-                  <div id="titulo"></div> <br>
-                  <div style="font-size: 12px;" class="alert alert-info mb-0" role="alert">
-                    <strong>
-                      ¡Importante!
-                    </strong>
-                    Los cambios marcados con * son obligatorios.
-                  </div>
-                </h6>
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-
-                <form name="formulario_registro" id="formulario_registro">
-                  <input type="hidden" id="ingreso_datos" name="ingreso_datos" value="si_registro">
-                  <input type="hidden" name="llave_empleado" id="llave_empleado" value="">
-                  <input type="hidden" name="validar" id="validar" value="">
-
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="nombre">Nombre *</label>
-                        <div class="position-relative">
-                          <input type="text" class="form-control" placeholder="Juan Carlos" id="nombre" name="nombre" maxlength="50">
-                          <div class="form-control-icon">
-                            <i class="bi bi-person"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="apellido">Apellido *</label>
-                        <div class="position-relative">
-                          <input type="text" class="form-control" placeholder="Perez Soza" id="apellido" name="apellido" maxlength="50">
-                          <div class="form-control-icon">
-                            <i class="bi bi-person"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="correo">Correo *</label>
-                        <input type="text" class="form-control" placeholder="jose145@gmail.com" id="correo" name="correo" maxlength="75">
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="pass">Contraseña *</label>
-
-                        <div class="input-group">
-                          <input type="Password" id="pass" name="pass" maxlength="25" placeholder="************" Class="form-control">
-
-                          <div class="input-group-append">
-                            <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="administrador">Administrador</label>
-                        <div class="position-relative">
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="administrador" id="flexRadioDefault1" value="1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                              Si
-                            </label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="administrador" id="flexRadioDefault2" value="0">
-                            <label class="form-check-label" for="flexRadioDefault2">
-                              No
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" onclick="Limpiar()" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary">
-                  <div id="valboton"></div>
-                </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
 
       </div>
       <!-- END wrapper -->
@@ -212,7 +169,7 @@
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-      <script src="funciones_empleado.js"></script>
+      <script src="funciones_empresa.js"></script>
       <script src="../validaciones/validar_input.js"></script>
 
 

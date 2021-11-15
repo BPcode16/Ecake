@@ -26,6 +26,11 @@ $(function() {
         var CorreoAdd = $('#correo').val();
         var ContraseñaAdd = $('#pass').val();
 
+        $('#nombre').css("background", "#fff");
+        $('#apellido').css("background", "#fff");
+        $('#correo').css("background", "#fff");
+        $('#pass').css("background", "#fff");
+
         if (NombreAdd.length < 3) {
             toastify("Campo Nombre vacío", 2);
             $('#nombre').focus();
@@ -50,7 +55,7 @@ $(function() {
             $('#correo').focus();
             $('#correo').css("background", "#fb6e893b").fadeIn(3000);
         } else if (soloCorreo(CorreoAdd) == false) {
-            toastify("Ingrese un correo correcto", 2);
+            toastify("Correo no permitido", 2);
             $('#apellido').css("background", "#fff");
             $('#correo').focus();
             $('#correo').css("background", "#fb6e893b").fadeIn(3000);
