@@ -147,10 +147,6 @@
                   <div class="mini-stat-info">
                         <span class="counter text-teal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¡Hora de ingresar nuevas características a tus pasteles!</font></font></span>
                     </div>
-
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
                   </div>
 
 

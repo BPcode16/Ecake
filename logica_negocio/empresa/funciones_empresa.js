@@ -1,5 +1,8 @@
 $(function() {
 
+    $.mask.definitions['~'] = '[2,6,7]';
+    $('#telefono').mask("~999-9999");
+
     console.log("JQuery si esta funcionando");
     CargarDatos();
 
