@@ -111,7 +111,7 @@ $(document).on("click",".btn_editar_p",function(e){
 			$('#descrip').val(json[2]['descripcion']);
 			$('#relleno').val(json[2]['idrelleno']);
 			$('#remojo').val(json[2]['idremojo']);
-			$('#sabor').val(json[2]['idsabor']);
+			$('#sabor').val(json[2]['idsabortorta']);
 			$('#tiempo').val(json[2]['tiempoprocesamiento']);
 
 			
