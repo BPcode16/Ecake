@@ -29,10 +29,6 @@ $(function() {
             toastify("Campo Nombre vacío", 2);
             $('#nombre').focus();
             $('#nombre').css("background", "#fb6e893b").fadeIn(3000);
-        } else if (soloLetras(nombreAdd) == false) {
-            toastify("Ingrese solo letras en el campo Nombre", 2);
-            $('#nombre').focus();
-            $('#nombre').css("background", "#fb6e893b").fadeIn(3000);
         } else if (emailAdd.length < 3 && !reg.test(emailAdd)) {
             toastify("Campo email vacío", 2);
             $('#nombre').css("background", "#fff");
@@ -95,6 +91,7 @@ function esperar() {
 }
 
 function CargarDatos() {
+    console.log("Entro a cargardatos ");
     var datos = { "consultar_datos": "si_consultalos" };
     $.ajax({
         dataType: "json",
@@ -103,6 +100,7 @@ function CargarDatos() {
         data: datos,
         success: function(json) {
             if (json[0] == "Exito") {
+                console.log("DATOS CARGADOS ",json[2]);
                 $('#llave_empresa').val(json[2]['idempresa']);
                 $('#nombre').val(json[2]['nombre']);
                 $('#email').val(json[2]['email']);

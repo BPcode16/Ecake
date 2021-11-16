@@ -130,3 +130,8 @@ $(document).ready(function() {
     });
 });
 /*  fin de mostrar contraseña */
+
+function soloDinero(texto) {
+    var regex = /^(?!0\.00)[1-9]\d{0,2}(,\d{3})*(\.\d\d)?$/; 
+    return regex.test(texto);
+}

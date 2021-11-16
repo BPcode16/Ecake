@@ -29,7 +29,7 @@ if (isset($_POST['ingreso_datos'])) {
     $resultado = $modelo->get_todos("tbl_empresa", "WHERE idempresa = 1");
 
     if ($resultado[0] == '1') {
-        print json_encode(array("Exito", $_POST, $resultado[2][0],$passdes));
+        print json_encode(array("Exito", $_POST, $resultado[2][0],""));
         exit();
     } else {
         print json_encode(array("Error", $_POST, $resultado));

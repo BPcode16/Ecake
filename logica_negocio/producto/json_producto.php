@@ -231,7 +231,7 @@
                exit();
 
 		}else{
-			print json_decode(array("Error",$resultado));
+			print json_decode("");
             exit();
 		}
 		

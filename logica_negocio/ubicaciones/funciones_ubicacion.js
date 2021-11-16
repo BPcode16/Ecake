@@ -2,27 +2,22 @@ $(function () {
   var fecha = new Date();
   console.log("JQuery si esta funcionando");
   //validardatos();
-
-  $("#formulario_registro").parsley();
-
-  $("#fecha").datepicker({
-    format: "dd/mm/yyyy",
-    language: "es",
-    autoclose: true,
-    endDate: fecha,
-  });
-
   CargarDatos();
 
   $(document).on("click", "#btn_eliminar", function (e) {
     e.preventDefault();
 
     Swal.fire({
-      title: "¿Desea eliminar el registro?",
-      showDenyButton: true,
-      showCancelButton: false,
-      confirmButtonText: "Si ",
-      denyButtonText: `NO`,
+      title: "¿Desea Eliminar?",
+      text: "¡No podra recuperar la información!",
+      icon: "warning",
+      width: 400,
+      toast: true,
+      showCancelButton: true,
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#6c757d",
+      cancelButtonColor: "#dc3545",
+      confirmButtonText: "Si, Eliminar!",
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
@@ -37,11 +32,16 @@ $(function () {
     e.preventDefault();
 
     Swal.fire({
-      title: "¿Desea eliminar el registro?",
-      showDenyButton: true,
-      showCancelButton: false,
-      confirmButtonText: "Si ",
-      denyButtonText: `NO`,
+      title: "¿Desea Eliminar?",
+      text: "¡No podra recuperar la información!",
+      icon: "warning",
+      width: 400,
+      toast: true,
+      showCancelButton: true,
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#6c757d",
+      cancelButtonColor: "#dc3545",
+      confirmButtonText: "Si, Eliminar!",
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
@@ -54,24 +54,26 @@ $(function () {
 });
 
 $(document).ready(function () {
-  $("#lista1").val(1);
+  $("#lista1").val(0);
   recargarLista();
   revisarBoton();
+  CargarDatos(0);
 
   $("#lista1").change(function () {
+    var iddepto = document.getElementsByName("lista1")[0].value;
     recargarLista();
     revisarBoton();
+    console.log("CARGANDO DATOS DE ID ", iddepto);
+    CargarDatos(iddepto);
   });
 });
 
 $(document).on("click", ".btn_editar", function (e) {
   e.preventDefault();
-
-  mostrar_cargando("Espere", "Obteniendo datos");
-
   var id = $(this).attr("data-id");
   console.log("El id es: ", id);
   var datos = { consultar_info: "si_conid_especifico", id: id };
+
   $.ajax({
     dataType: "json",
     method: "POST",
@@ -86,6 +88,7 @@ $(document).on("click", ".btn_editar", function (e) {
         recargarLista(id);
         $("#lista2").val(id);
         $("#costoenvio").val(json[2]["costoenvio"]);
+        $("#costoenvio").focus();
       }
     })
     .fail(function () {})
@@ -105,7 +108,7 @@ function recargarLista($id) {
     url: "datos.php",
     data: datos,
     success: function (r) {
-      $("#select2lista").html(r)
+      $("#select2lista").html(r);
     },
   });
 }
@@ -113,7 +116,7 @@ function recargarLista($id) {
 function revisarBoton() {
   var datos = {
     consultar_boton: "si_consultalo",
-    departamento: $("#lista1").val()
+    departamento: $("#lista1").val(),
   };
 
   $.ajax({
@@ -121,22 +124,20 @@ function revisarBoton() {
     url: "json_ubicacion.php",
     data: datos,
     success: function (r) {
-      $("#select2boton").html(r)
+      $("#select2boton").html(r);
     },
   });
 }
 
 function eliminar(id) {
+  var iddepto = document.getElementsByName("lista1")[0].value;
 
-  $iddepto = document.getElementsByName("lista1")[0].value;
-
-  console.log("DEPTO A ELIMINAR ");
-  mostrar_cargando(
-    "Procesando solicitud",
-    "Espere mientras se eliminan los datos"
-  );
-
-  var datos = { eliminar_datos: "si_eliminalo", idmunicipio: id, iddepartamento:$iddepto};
+  console.log("DEPTO A ELIMINAR ", iddepto);
+  var datos = {
+    eliminar_datos: "si_eliminalo",
+    idmunicipio: id,
+    iddepartamento: iddepto,
+  };
   $.ajax({
     dataType: "json",
     method: "POST",
@@ -147,38 +148,46 @@ function eliminar(id) {
       console.log("Respuesta: ", json);
       if (json[0] == "Exito") {
         Swal.close();
-        CargarDatos();
+        CargarDatos(iddepto);
+        toastify("Datos eliminados exitosamente.", 1);
       }
     })
     .fail(function () {
-      CargarDatos();
+      toastify("Datos eliminados exitosamente.", 1);
+      CargarDatos(iddepto);
     })
     .always(function () {});
 }
 
 $(document).on("click", "#btn_guardar", function (e) {
   e.preventDefault();
-
+  iddepartamento = document.getElementsByName("lista1")[0].value;
   if ($("#costoenvio").val().length == 0) {
-    //ALERTA AQUI DE VACIO
-    alert("Campos vacios");
+    $("#costoenvio").css("background", "#fb6e893b").fadeIn(3000);
+    toastify("Campo costo de envío vacío.", 2);
+    $("#costoenvio").focus();
   } else {
     if ((id = document.getElementsByName("lista2")[0].value == 0)) {
       Swal.fire({
         title: "¿Desea actualizar los registros seleccionados?",
-        showDenyButton: true,
-        showCancelButton: false,
-        confirmButtonText: "SI ",
-        denyButtonText: `NO`,
+        text: "¡Se actualizara la información del departamento completo!",
+        icon: "warning",
+        width: 400,
+        toast: true,
+        showCancelButton: true,
+        cancelButtonText: "Cancelar",
+        confirmButtonColor: "#6c757d",
+        cancelButtonColor: "#dc3545",
+        confirmButtonText: "Proceder",
       }).then((result) => {
         if (result.isConfirmed) {
-          actualizar();
+          actualizar(iddepartamento);
         } else if (result.isDenied) {
           Swal.fire("Accion cancelada por el usuario", "", "info");
         }
       });
     } else {
-      actualizar();
+      actualizar(iddepartamento);
     }
   }
 });
@@ -202,36 +211,21 @@ function actualizar() {
   })
     .done(function (json) {
       if (json[0] == "Exito") {
-        CargarDatos();
+        $("#costoenvio").css("background", "#FFFFFF").fadeIn(3000);
+        toastify("Datos actualizados exitosamente.", 1);
+        CargarDatos(iddepartamento);
         $("#costoenvio").val("");
       }
     })
-    .fail(function () {})
+    .fail(function () {
+      console.log("NO Se actualizo registro del departamento ", iddepartamento);
+    })
     .always(function () {});
 }
 
-function mostrar_cargando(titulo, mensaje = "") {
-  Swal.fire({
-    title: titulo,
-    html: mensaje,
-    timer: 2000,
-    timerProgressBar: true,
-    didOpen: () => {
-      Swal.showLoading();
-    },
-    willClose: () => {},
-  }).then((result) => {
-    /* Read more about handling dismissals below */
-    if (result.dismiss === Swal.DismissReason.timer) {
-      console.log("I was closed by the timer");
-    }
-  });
-}
-
-function CargarDatos() {
-  mostrar_cargando("Cargando datos", "");
+function CargarDatos(id) {
   revisarBoton();
-  var datos = { consultar_datos: "si_consultalos" };
+  var datos = { consultar_datos: "si_consultalos", id: id };
   $.ajax({
     dataType: "json",
     method: "POST",

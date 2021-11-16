@@ -5,6 +5,9 @@
 
 <?php include '../../layouts/headerStyle.php'; ?>
 
+<!-- Alertas -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 <link href="../../public/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
 
 <link href="../../public/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
@@ -97,7 +100,8 @@
                           <div class="col-sm">
                             <label>Departamentos</label>
                             <select class="form-control form-select-lg mb-3" id="lista1" name="lista1">
-                              <option selected value="1">Ahuachapán</option>
+                              <option selected value="0">Todos</option>
+                              <option value="1">Ahuachapán</option>
                               <option value="2">Santa Ana</option>
                               <option value="3">Sonsonate</option>
                               <option value="4">La Libertad</option>
@@ -120,15 +124,15 @@
                         <div class="col-sm-5">
                           <div class="form-group">
                             <label>Costo de envío ($) *</label>
-                            <input type="number" min="0" step="1" step="any" maxlength="10" autocomplete="off" name="costoenvio" data-parsley-error-message="Campo requerido" required id="costoenvio" class="form-control" required placeholder="Ingrese costo de envio" />
+                            <input type="number" min="0" step="0.01" maxlength="10" autocomplete="off" name="costoenvio" data-parsley-error-message="Campo requerido" required id="costoenvio" class="form-control" required placeholder="Ingrese costo de envio" />
                           </div>
                         </div>
                       </div>
                   </div>
                   <div class="d-flex">
                     <div class="mr-auto pl-4">
-                    <div id="select2boton"></div>
-                     </div>
+                      <div id="select2boton"></div>
+                    </div>
                     <div class="pr-5">
                       <button id="btn_guardar" class="btn btn-primary ml-auto">Actualizar datos</button>
                     </div>
@@ -194,6 +198,8 @@
 
   <script src="funciones_ubicacion.js"></script>
 
+  <!-- Validaciones -->
+  <script src="../validaciones/validar_input.js"></script>
 
 </body>
 

@@ -23,7 +23,7 @@
                    </li>
 
                    <li>
-                       <a href="../../logica_negocio/ubicaciones/?modulo=UBICACIONES" class="waves-effect"><i class="mdi mdi-human-greeting"></i><span> Ubicaciones </span></a>
+                       <a href="../../logica_negocio/ubicaciones/?modulo=UBICACIONES" class="waves-effect"><i class="mdi mdi-google-maps"></i><span> Ubicaciones </span></a>
                    </li>
                    <li>
                        <a href="../../logica_negocio/empleados/?modulo=EMPLEADOS" class="waves-effect"><i class="mdi mdi-worker"></i><span> Empleados </span></a>
@@ -41,6 +41,7 @@
                            <li><a href="../../logica_negocio/producto/?modulo=REGISTRA TUS PRODUCTOS">Registra tus pasteles</a></li>
                            <li><a href="../../logica_negocio/categoria/?modulo=CATEGORIA DE PRODUCTOS">Categoría de pasteles</a></li>
                            <li><a href="../../logica_negocio/complementos_producto/?modulo=CARACTERISTICAS DE TUS PRODUCTOS">Características de los pasteles</a></li>
+                           <li><a href="../../logica_negocio/presentaciones/?modulo=PRESENTACIONES">Presentaciones de los pasteles</a></li>
                        </ul>
                    </li>
 
