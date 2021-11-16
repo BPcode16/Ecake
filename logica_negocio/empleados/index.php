@@ -39,7 +39,7 @@
 
               <div class="col-md-6 col-xl-6">
                 <div class="mini-stat clearfix bg-white">
-                  <span class="mini-stat-icon bg-blue-grey mr-0 float-right"><i class="mdi mdi-content-copy"></i></span>
+                  <span class="mini-stat-icon bg-blue-grey mr-0 float-right"><i class="mdi mdi-worker"></i></span>
                   <div class="mini-stat-info">
                     <span class="counter text-blue-grey">
                       <div id="empleados_registradas"></div>
@@ -57,7 +57,7 @@
 
               <div class="col-md-6 col-xl-6" id="registrar_empleado" style="cursor: pointer;">
                 <div class="mini-stat clearfix bg-white">
-                  <span class="mini-stat-icon bg-teal mr-0 float-right"><i class=" mdi mdi-account-circle"></i></span>
+                  <span class="mini-stat-icon bg-teal mr-0 float-right"><i class="mdi mdi-plus"></i></span>
                   <div class="mini-stat-info">
                     <span class="counter text-teal">
                       <font style="vertical-align: inherit;">
