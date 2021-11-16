@@ -228,8 +228,8 @@ function subir_archivo(archivo, idproducto) {
             console.log("eljson_img", json[0]);
 
             if (json[0] == "Exito") {
-                toastify("¡Acción Realizada!\nDatos almacenados con éxito", 1);
                 $("#md_registrar_producto").modal("show");
+                toastify("¡Acción Realizada!\nRegistro guardado con exito", 1);
                 CargarDatos();
             } else {
                 console.log("Este es el error que devuelve json", json[0]);

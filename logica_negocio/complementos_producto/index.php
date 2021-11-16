@@ -166,7 +166,7 @@
                                 <div class="form-group">
                                     <label>Ingresa tu nuevo sabor de relleno</label>
                                         <div class="input-group mb-3">
-                                                <input type="text" autocomplete="off" name="nombre_relleno" data-parsley-error-message="Campo requerido" id="nombre_relleno" class="form-control"  />
+                                                <input type="text" name="nombre_relleno" id="nombre_relleno" class="form-control"   maxlength="60" />
                                                     <div class="input-group-append">
                                                     <button type="button" name="btn_registro_relleno" id="btn_registro_relleno" class="btn btn-primary"><i class="fa fa-plus" title="Agregar sabor de relleno"></i> </button>
                                                     </div>
@@ -189,7 +189,7 @@
                                 <div class="form-group">
                                     <label>Ingresa tu nuevo sabor de remojo</label>
                                         <div class="input-group mb-3">
-                                                <input type="text" autocomplete="off" name="nombre_remojo" data-parsley-error-message="Campo requerido" id="nombre_remojo" class="form-control"  />
+                                                <input type="text" autocomplete="off" name="nombre_remojo" id="nombre_remojo" class="form-control" maxlength="60" />
                                                     <div class="input-group-append">
                                                     <button type="button" name="btn_registro_remojo" id="btn_registro_remojo" class="btn btn-primary"><i class="fa fa-plus" title="Agregar sabor de remojo"></i> </button>
                                                     </div>
@@ -213,7 +213,7 @@
                                 <div class="form-group">
                                     <label>Ingresa tu nuevo sabor de torta</label>
                                         <div class="input-group mb-3">
-                                                <input type="text" autocomplete="off" name="nombre_sabor" data-parsley-error-message="Campo requerido" id="nombre_sabor" class="form-control"  />
+                                                <input type="text" name="nombre_sabor" id="nombre_sabor" class="form-control" maxlength="60"/>
                                                     <div class="input-group-append">
                                                     <button type="button" name="btn_registro_sabor" id="btn_registro_sabor" class="btn btn-primary"><i class="fa fa-plus" title="Agregar sabor de tortaa"></i> </button>
                                                     </div>
@@ -225,7 +225,7 @@
                       
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-secondary" onclick="Limpiar()" data-dismiss="modal">Cerrar</button>
                     </form>
                   </div>
                 </div>
@@ -263,7 +263,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script src="funciones_complementos.js"></script>
-
+        <script src="../validaciones/validar_input.js"></script>
 
     </body>
 </html>

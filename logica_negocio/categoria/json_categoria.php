@@ -14,7 +14,7 @@
 
         $resultado = $modelo->actualizar_generica($array_update);
 
-        if($resultado[0]=='1' && $resultado[4]>0){
+        if($resultado[0]=='1'){
 
             print json_encode(array("Exito",$_POST,$resultado));
             exit();

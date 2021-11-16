@@ -121,7 +121,7 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label>Nombre *</label>
-                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ingrese el nombre de la categoría"/>
+                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ingrese el nombre de la categoría" maxlength="50"/>
                               </div>
                             </div>
 
@@ -130,7 +130,7 @@
                               <div class="form-group">
                                     <label>Descrición *</label>
                                     <div>
-                                        <textarea class="form-control" id="descrip" name="descrip" rows="3" placeholder="Agrega una descripcion a la categoría"></textarea>
+                                        <textarea class="form-control" id="descrip" name="descrip" rows="3" placeholder="Agrega una descripcion a la categoría" maxlength="200"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +141,7 @@
                       
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" onclick="Limpiar()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button type="submit"  class="btn btn-primary">Guardar</button>
                     </form>
                   </div>

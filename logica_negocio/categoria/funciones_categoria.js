@@ -10,23 +10,29 @@ $(function() {
         e.preventDefault();
 
         Swal.fire({
-            title: '¿Desea eliminar el registro?',
-            showDenyButton: true,
-            showCancelButton: false,
-            confirmButtonText: 'Si ',
-            denyButtonText: `NO`,
+            title: '¿Desea Eliminar?',
+            text: "¡No podra recuperar la información!",
+            icon: 'warning',
+            width: 400,
+            toast: true,
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: '#6c757d',
+            cancelButtonColor: '#dc3545',
+            confirmButtonText: 'Si, Eliminar!'
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                 eliminar($(this).attr('data-id'));
             } else if (result.isDenied) {
-                Swal.fire('Accion cancelada por el usuario', '', 'info')
+                toastify("¡Acción no permitida!\nEs posible que este empleado este asociado a otro registro", 2);
             }
         })
     });
 
     $(document).on("click", "#registrar_categoria", function(e) {
         e.preventDefault();
+        Limpiar();
         $("#md_registrar_categoria").modal("show");
     });
 
@@ -50,7 +56,7 @@ $(document).on("submit", "#formulario_registro", function(e) {
         $("#categoria").css("background", "#fff");
         $("#nombre").focus();
         $("#nombre").css("background", "#fb6e893b").fadeIn(3000);
-    } else if (descrip.length > 255) {
+    } else if (descrip.length > 200) {
         toastify("Campo descripción sobrepaso el limite de 200 caracteres", 2);
         $("#sabor").css("background", "#fff");
         $("#descrip").focus();
@@ -67,12 +73,11 @@ $(document).on("submit", "#formulario_registro", function(e) {
 
             console.log("Datos consultados antes de if: ", json);
             if (json[0] == "Exito") {
-                Swal.close();
+                Limpiar();
                 console.log("Datos consultados dd: ", json);
+                toastify("¡Acción Realizada!\nRegistro guardado con exito", 1);
                 $("#md_registrar_categoria").modal("hide");
-
                 $('#ingreso_datos').val("si_registro");
-
                 CargarDatos();
             }
 
@@ -84,6 +89,14 @@ $(document).on("submit", "#formulario_registro", function(e) {
 
     }
 });
+
+function Limpiar() {
+
+    $("#nombre").val("");
+    $("#descrip").val("");
+    $("#nombre").css("background", "#fff");
+    $("#descrip").css("background", "#fff");
+}
 
 //AQUI EL METODO EDITAR
 
@@ -99,7 +112,6 @@ $(document).on("click", ".btn_editar", function(e) {
         url: 'json_categoria.php',
         data: datos,
     }).done(function(json) {
-        Swal.close();
         console.log("EL consultar especifico", json);
         if (json[0] == "Exito") {
 
@@ -107,7 +119,6 @@ $(document).on("click", ".btn_editar", function(e) {
             $('#ingreso_datos').val("si_actualizalo");
             $('#nombre').val(json[2]['nombre']);
             $('#descrip').val(json[2]['descripcion']);
-
             $('#md_registrar_categoria').modal('show');
         }
 
@@ -123,7 +134,7 @@ $(document).on("click", ".btn_editar", function(e) {
 //AQUI EL METODO DE ELIMINAR
 
 function eliminar(id) {
-    mostrar_cargando("Procesando solicitud", "Espere mientras se eliminan los datos")
+    //mostrar_cargando("Procesando solicitud", "Espere mientras se eliminan los datos")
 
 
     var datos = { "eliminar_datos": "si_eliminalo", "idcategoria": id };
@@ -137,6 +148,8 @@ function eliminar(id) {
         if (json[0] == "Exito") {
             Swal.close();
             CargarDatos();
+        } else {
+            toastify("¡Acción no permitida!\nEs posible que esta categoria este asociada a otro registro", 2);
         }
     }).fail(function() {
 
@@ -172,7 +185,7 @@ function mostrar_cargando(titulo, mensaje = "") {
 //METODO QUE CARGA LA TABLA
 
 function CargarDatos() {
-    mostrar_cargando("Cargando datos", "")
+    //mostrar_cargando("Cargando datos", "")
     var datos = { "consultar_datos": "si_consultalos" };
     $.ajax({
         dataType: "json",
