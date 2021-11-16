@@ -9,12 +9,12 @@
 		$name = "img_".$_GET['id'].".".$extension;
 
 		$file_path = "imagenes_producto/".$name;
+        $file_path_ruta = "logica_negocio/producto/imagenes_producto/".$name;
 		try {
 			$mover = move_uploaded_file($_FILES['file-0']['tmp_name'], $file_path);
 
             //Aqui hacemos la actualizacion a la base y le asignamos la imagen
             $array_update = array(
-            
 
                 "table" => "tbl_productos",
                 "idproducto" => $_GET['id'],
@@ -180,12 +180,12 @@
 				
 				
 				$html_tr.='<tr>
+                            <td><img alt="img" width="90" height="100" src="'.$row['imagenprincipal'].'"></td>
                             <td>'.$row['idcategoria'].'</td>
                             <td>'.$row['nombre'].'</td>
                             <td>'.$row['descripcion'].'</td>
                             <td>'.$row['tiempoprocesamiento'].'</td>
                             <td>'.$row['estado'].'</td>
-                            
                             <td>'.$row['idrelleno'].'</td>
                             <td>'.$row['idremojo'].'</td>
                             <td>'.$row['idsabortorta'].'</td>
@@ -196,16 +196,17 @@
                         </tr>';
 				
 			}
+            
 
-			$html.='<table id="tabla_producto" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+			$html.='<table id="tabla_producto" class="table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                         <thead>
                         <tr>
+                            <th>Fotografía</th>
                             <th>Categoría</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
                             <th>Tiempo procesado (Días)</th>
                             <th>Estado</th>
-                            
                             <th>Relleno</th>
                             <th>Remojo</th>
                             <th>Sabor torta</th>
