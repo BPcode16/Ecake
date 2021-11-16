@@ -1,8 +1,6 @@
 $(function () {
   var fecha = new Date();
   console.log("JQuery si esta funcionando");
-  validardatos();
-  $("#formulario_registro").parsley();
 
   CargarDatos("si_consultalos");
 
@@ -10,11 +8,16 @@ $(function () {
     e.preventDefault();
 
     Swal.fire({
-      title: "¿Desea eliminar las presentaciones para este producto?",
-      showDenyButton: true,
-      showCancelButton: false,
-      confirmButtonText: "Si ",
-      denyButtonText: `NO`,
+      title: "¿Desea Eliminar?",
+      text: "¡No podra recuperar la información!",
+      icon: "warning",
+      width: 400,
+      toast: true,
+      showCancelButton: true,
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#6c757d",
+      cancelButtonColor: "#dc3545",
+      confirmButtonText: "Si, Eliminar!",
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
@@ -29,11 +32,16 @@ $(function () {
     e.preventDefault();
 
     Swal.fire({
-      title: "¿Desea eliminar esta presentación?",
-      showDenyButton: true,
-      showCancelButton: false,
-      confirmButtonText: "Si ",
-      denyButtonText: `NO`,
+      title: "¿Desea Eliminar?",
+      text: "¡No podra recuperar la información!",
+      icon: "warning",
+      width: 400,
+      toast: true,
+      showCancelButton: true,
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#6c757d",
+      cancelButtonColor: "#dc3545",
+      confirmButtonText: "Si, Eliminar!",
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
@@ -54,62 +62,79 @@ $(function () {
   $(document).on("submit", "#formulario_registro", function (e) {
     e.preventDefault();
     var btn1 = $("#boton1").val();
-    console.log("BOTON TEXTO 1 ES " + btn1);
+    var precio = $("#precio").val();
+    console.log("Precio capturado es " + precio);
+    //toastify("Ingrese un precio válido.", 2);
 
-    if (btn1 == 1) {
-      //Si el boton es 1 guarda
-      if (document.getElementsByName("lista2")[0].value < 1) {
-        alert("Seleccione un producto valido");
-      } else {
-        var datos = $("#formulario_registro").serialize();
-        console.log("Datos: ", datos);
+    if ($("#precio").val() == "") {
+      toastify("Campo precio requerido.", 2);
+      $("#precio").focus();
+    } else if ($("#tamanio").val() == "") {
+      toastify("Campo tamaño requerido.", 2);
+      $("#tamanio").focus();
+    } else {
+      if (soloDinero(precio) == true) {
+        if (btn1 == 1) {
+          //Si el boton es 1 guarda
+          if (document.getElementsByName("lista2")[0].value < 1) {
+            toastify("Seleccione un producto válido.", 2);
+          } else {
+            var datos = $("#formulario_registro").serialize();
+            console.log("Datos: ", datos);
 
-        $.ajax({
-          dataType: "json",
-          method: "POST",
-          url: "json_usuarios.php",
-          data: datos,
-        })
-          .done(function (json) {
-            if (json[0] == "Exito") {
-              console.log("Datos consultados dd: ", json);
-              $("#ingreso_datos").val("si_registro");
+            $.ajax({
+              dataType: "json",
+              method: "POST",
+              url: "json_presentaciones.php",
+              data: datos,
+            })
+              .done(function (json) {
+                if (json[0] == "Exito") {
+                  console.log("Datos consultados dd: ", json);
+                  $("#ingreso_datos").val("si_registro");
 
+                  CargarDatos("si_consultalos");
+                  actualizar_tbl();
+                  limpiar();
+                  toastify("Presentación registrada correctamente.", 1);
+                }
+              })
+              .fail(function () {})
+              .always(function () {});
+          }
+        } else {
+          //Si el boton es 2 modifica
+          console.log("ENTRO A MODIFICAR BOTON ES 2");
+          var datos = $("#formulario_registro").serialize();
+          $("#ingreso_datos").val("si_actualizalo");
+          console.log("Datos: ", datos);
+
+          $.ajax({
+            dataType: "json",
+            method: "POST",
+            url: "json_presentaciones.php",
+            data: datos,
+          })
+            .done(function (json) {
+              console.log("Datos consultados antes de if: ", json);
+              if (json[0] == "Exito") {
+                console.log("Datos consultados dd: ", json);
+                $("#ingreso_datos").val("si_actualizalo");
+              }
               CargarDatos("si_consultalos");
               actualizar_tbl();
+              cancel();
               limpiar();
-            }
-          })
-          .fail(function () {})
-          .always(function () {});
+              toastify("Datos actualizados exitosamente.", 1);
+            })
+            .fail(function () {})
+            .always(function () {});
+        }
+      } else {
+        toastify("Ingrese un precio válido.", 2);
+        $("#precio").focus();
+        $("#precio").css("background", "#fb6e893b").fadeIn(3000);
       }
-    } else {
-      //Si el boton es 2 modifica
-      console.log("ENTRO A MODIFICAR BOTON ES 2");
-      var datos = $("#formulario_registro").serialize();
-      $("#ingreso_datos").val("si_actualizalo");
-      console.log("Datos: ", datos);
-
-      $.ajax({
-        dataType: "json",
-        method: "POST",
-        url: "json_usuarios.php",
-        data: datos,
-      })
-        .done(function (json) {
-          console.log("Datos consultados antes de if: ", json);
-          if (json[0] == "Exito") {
-            console.log("Datos consultados dd: ", json);
-            $("#ingreso_datos").val("si_actualizalo");
-
-            CargarDatos("si_consultalos");
-            actualizar_tbl();
-            cancel();
-            limpiar();
-          }
-        })
-        .fail(function () {})
-        .always(function () {});
     }
   });
 });
@@ -176,7 +201,7 @@ $(document).on("click", ".btn_editar2", function (e) {
   $.ajax({
     dataType: "json",
     method: "POST",
-    url: "json_usuarios.php",
+    url: "json_presentaciones.php",
     data: datos,
   })
     .done(function (json) {
@@ -209,7 +234,7 @@ function eliminar(id) {
   $.ajax({
     dataType: "json",
     method: "POST",
-    url: "json_usuarios.php",
+    url: "json_presentaciones.php",
     data: datos,
   })
     .done(function (json) {
@@ -217,6 +242,7 @@ function eliminar(id) {
       if (json[0] == "Exito") {
         Swal.close();
         CargarDatos("si_consultalos");
+        toastify("Presentaciones eliminadas correctamente.", 1);
       }
     })
     .fail(function () {})
@@ -228,7 +254,7 @@ function eliminar2(id) {
   $.ajax({
     dataType: "json",
     method: "POST",
-    url: "json_usuarios.php",
+    url: "json_presentaciones.php",
     data: datos,
   })
     .done(function (json) {
@@ -237,6 +263,7 @@ function eliminar2(id) {
         Swal.close();
         CargarDatos("si_consultalos");
         actualizar_tbl();
+        toastify("Presentación eliminada correctamente.", 1);
       }
     })
     .fail(function () {})
@@ -248,7 +275,7 @@ function CargarDatos(consulta, idprod) {
   $.ajax({
     dataType: "json",
     method: "POST",
-    url: "json_usuarios.php",
+    url: "json_presentaciones.php",
     data: datos,
   })
     .done(function (json) {
@@ -264,7 +291,7 @@ function CargarDatos(consulta, idprod) {
 
           $("#tabla_cliente").DataTable(); //le da el formato
         }
-        $("#usuarios_registrados").empty().html(json[2]);
+        actualizarInfo();
       }
     })
     .fail(function ($value) {
@@ -273,9 +300,22 @@ function CargarDatos(consulta, idprod) {
     .always(function () {});
 }
 
-function validardatos() {
-  $.mask.definitions["~"] = "[2,6,7]";
-  $("#telefono").mask("~999-9999");
+function actualizarInfo() {
+  var datos = { consultar_datos: "si_actualiza" };
+  $.ajax({
+    dataType: "json",
+    method: "POST",
+    url: "json_presentaciones.php",
+    data: datos,
+  })
+    .done(function (json) {
+      console.log("Datos consultados: ", json);
+      if (json[0] == "Exito") {
+        $("#usuarios_registrados").empty().html(json[2]);
+      }
+    })
+    .fail(function ($value) {})
+    .always(function () {});
 }
 
 function actualizar_tbl() {

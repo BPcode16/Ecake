@@ -5,6 +5,9 @@
 
 <?php include '../../layouts/headerStyle.php'; ?>
 
+<!-- Alertas -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 <link href="../../public/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
 
 <link href="../../public/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
@@ -48,7 +51,7 @@
                     </span>
                     <font style="vertical-align: inherit;">
                       <font style="vertical-align: inherit;">
-                        Usuarios registrado
+                        Productos sin presentaciones
                       </font>
                     </font>
                   </div>
@@ -139,28 +142,29 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Tamaño *</label>
-                    <input type="text" autocomplete="off" name="tamanio" data-parsley-error-message="Campo requerido" id="tamanio" class="form-control" required placeholder="Ingrese tamaño de presentación" />
+                    <input type="text" maxlength="35" autocomplete="off" name="tamanio" id="tamanio" class="form-control" placeholder="Ingrese tamaño de presentación" />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Precio *</label>
-                    <input type="number" autocomplete="off" name="precio" data-parsley-error-message="Campo requerido" id="precio" class="form-control" required placeholder="Ingrese precio" />
+                    <input type="number" min="0" step="0.01" step="any" maxlength="10" autocomplete="off" name="precio" id="precio" class="form-control" placeholder="Ingrese precio" />
                   </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" onclick="cancel()" id="boton2" value="1" name="boton2" class="btn btn-secondary">Cerrar</button>
-                  <button type="submit" id="boton1" value="1" name="boton1" class="btn btn-primary">Agregar</button>
-                </div>
-                <div class="col-12">
-                  <card class="card m-b-20">
-                    <div class="card-body">
-                      <div id="aqui_tabla2">
-                      </div>
-                    </div>
-                  </card>
-                </div>
               </div>
+              <div class="modal-footer">
+                <button type="button" onclick="cancel()" id="boton2" value="1" name="boton2" class="btn btn-secondary">Cerrar</button>
+                <button type="submit" id="boton1" value="1" name="boton1" class="btn btn-primary">Agregar</button>
+              </div>
+              <div class="col-12">
+                <card class="card m-b-20">
+                  <div class="card-body">
+                    <div id="aqui_tabla2">
+                    </div>
+                  </div>
+                </card>
+              </div>
+
           </div>
           </form>
         </div>
@@ -198,7 +202,9 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-  <script src="funciones_usuarios.js"></script>
+  <script src="funciones_presentaciones.js"></script>
+  <!-- Validaciones -->
+  <script src="../validaciones/validar_input.js"></script>
 
 
 </body>

@@ -8,4 +8,23 @@
 <link href="../../public/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 <!-- Responsive datatable examples -->
 <link href="../../public/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<!-- Alertas -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<!-- Check Admin -->
+<link rel="stylesheet" href="../../public/assets/css/custom.css">
 </head>
+
+<style>
+	body.modal-open {
+        overflow: hidden;
+        position:fixed;
+        width: 100%;
+    }
+
+    .dataTables_filter {
+	    float: right;
+	}
+	.dataTables_paginate {
+	    float: right;
+	}
+</style>

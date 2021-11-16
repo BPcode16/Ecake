@@ -133,13 +133,14 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_actualizalo
     if ($resultado[0] == "1") {
         if ($resultado[4] > 0) {
             foreach ($resultado[2] as $row) {
-
+                $precio = $row['precio'];
+                $precio = "$ " . number_format($precio, 2);
 
                 $html_tr .= '<tr>
                             <td>' . $row['idproducto'] . '</td>
                             <td>' . $row['nombre'] . '</td>
                             <td>' . $row['tamanio'] . '</td>
-                            <td>' . $row['precio'] . '</td>
+                            <td>' . $precio . '</td>
                             <td>
                             <a href="javascript:void(0)" class="btn_editar2" data-id="' . $row['idpresentacion'] . '" style="margin-right: 25px;"><i class="mdi mdi-lead-pencil" title="Editar producto"></i></a>
                             <a href="javascript:void(0)" class="text-danger btn_eliminar2"  data-id="' . $row['idpresentacion'] . '"><i class="mdi mdi-delete" title="Eliminar producto"></i></a>
@@ -166,8 +167,8 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_actualizalo
             $html .= '<h6>No tiene presentaciones.</h6>
                         ';
         }
-        if($idproducto == -1) {
-            
+        if ($idproducto == -1) {
+
             $html = '<h6>Seleccione un producto.</h6>
                         ';
         }
@@ -175,4 +176,12 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_actualizalo
     } else {
         print json_decode("");
     }
+} else if (isset($_POST['consultar_datos']) && $_POST['consultar_datos'] == "si_actualiza") {
+    $sql = "SELECT *
+    FROM tbl_productos p
+    WHERE NOT EXISTS (SELECT * FROM tbl_presentacion pr
+    WHERE pr.idproducto = p.idproducto )";
+    $resultado = $modelo->get_query($sql);
+
+    print json_encode(array("Exito", "", $resultado[4]));
 }
