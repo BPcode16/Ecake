@@ -57,7 +57,7 @@
 
               <div class="col-md-6 col-xl-6" id="registrar_empleado" style="cursor: pointer;">
                 <div class="mini-stat clearfix bg-white">
-                  <span class="mini-stat-icon bg-teal mr-0 float-right"><i class="mdi mdi-plus"></i></span>
+                  <span class="mini-stat-icon bg-teal mr-0 float-right"><i class="mdi mdi-library-plus"></i></span>
                   <div class="mini-stat-info">
                     <span class="counter text-teal">
                       <font style="vertical-align: inherit;">

@@ -121,7 +121,7 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label>Nombre *</label>
-                                <input type="text" autocomplete="off" name="nombre" data-parsley-error-message="Campo requerido" id="nombre" class="form-control" required placeholder="Ingrese el nombre de la categoría"/>
+                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ingrese el nombre de la categoría"/>
                               </div>
                             </div>
 
@@ -130,7 +130,7 @@
                               <div class="form-group">
                                     <label>Descrición *</label>
                                     <div>
-                                        <textarea required class="form-control" id="descrip" name="descrip" rows="5" data-parsley-error-message="Campo requerido" placeholder="Agrega una descripcion a la categoría"></textarea>
+                                        <textarea class="form-control" id="descrip" name="descrip" rows="3" placeholder="Agrega una descripcion a la categoría"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -182,7 +182,7 @@
 
 
         <script src="funciones_categoria.js"></script>
-
+        <script src="../validaciones/validar_input.js"></script>
 
     </body>
 </html>

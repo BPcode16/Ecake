@@ -537,7 +537,7 @@ class Modelo_generico
 			$comando->execute();
 			$resultado = $comando->fetchAll();
 			//$option_devolver ="<option value=''></option>";//chosen select
-			$option_devolver = ($el_seleccione != "") ? "<option value='-1'>Seleccione</option>" : "<option>Seleccione</option>"; //select 2
+			$option_devolver = ($el_seleccione != "") ? "<option value='-1'>Seleccione</option>" : "<option value=''>Seleccione</option>"; //select 2
 			$data_selected = "";
 			foreach ($resultado as $row) {
 				$as++;

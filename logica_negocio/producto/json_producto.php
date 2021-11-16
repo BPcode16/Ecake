@@ -171,7 +171,15 @@
         $result_remojo= $modelo->crear_select($arrar_remojo, $estado_activo);
         $result_sabor= $modelo->crear_select($arrar_sabor, $estado_activo);
         //Comienza la tabla
-		$sql = "SELECT * FROM tbl_productos";
+		$sql = "SELECT
+        p.idproducto, ct.nombre idcategoria, p.nombre, p.descripcion, p.tiempoprocesamiento, p.estado, p.imagenprincipal, rl.saborrelleno idrelleno, rm.saborremojo idremojo, sb.sabortorta idsabortorta
+      FROM
+        tbl_productos p
+      LEFT JOIN tbl_categorias ct
+        ON p.idcategoria=ct.idcategoria
+      LEFT JOIN tbl_relleno rl ON p.idrelleno=rl.idrelleno
+      LEFT JOIN tbl_remojo rm ON p.idremojo=rm.idremojo
+      LEFT JOIN tbl_sabortorta sb ON p.idsabortorta=sb.idsabortorta";
 		$resultado = $modelo->get_query($sql);
 
 		$html=$html_tr="";
@@ -228,5 +236,3 @@
 		}
 		
 	}
-
-?>
