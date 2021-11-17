@@ -19,7 +19,7 @@ function soloCorreo(texto) {
 }
 
 function soloContrasena(texto) {
-    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,20}$/;
+    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.])([A-Za-z\d$@$!%*?&#.]|[^ ]){8,20}$/;
     return regex.test(texto);
 }
 
@@ -132,6 +132,6 @@ $(document).ready(function() {
 /*  fin de mostrar contraseña */
 
 function soloDinero(texto) {
-    var regex = /^(?!0\.00)[1-9]\d{0,2}(,\d{3})*(\.\d\d)?$/; 
+    var regex = /^(?!0\.00)[1-9]\d{0,2}(,\d{3})*(\.\d\d)?$/;
     return regex.test(texto);
 }

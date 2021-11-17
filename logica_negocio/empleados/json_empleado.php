@@ -72,8 +72,7 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_registro") 
             $html_tr .= '<tr>
                         <td>' . $row['apellido'] . '</td>
                         <td>' . $row['nombre'] . '</td>
-                        <td>' . $row['correo'] . '</td>
-                        <td>' . $row['pass'] . '</td>';
+                        <td>' . $row['correo'] . '</td>';
 
             if ($row['estado'] == 1) {
                 $html_tr .= '<td>
@@ -117,7 +116,6 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_registro") 
                         <th>Apellido</th>
                         <th>Nombre</th>
                         <th>Correo</th>
-                        <th>Contraseña</th>
                         <th>Estado</th>
                         <th>Administrador</th>
                         <th>Acciones</th>

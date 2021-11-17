@@ -275,7 +275,7 @@
            	print json_encode(array("Exito",$html,$resultado[4]));
 
 		}else{
-			print json_decode(array("Error",$resultado));
+			//print json_decode(array("Error",$resultado));
 		}
 		
 	}else if (isset($_POST['consultar_datos_remojo']) && $_POST['consultar_datos_remojo']=="si_consultalos") {
@@ -315,7 +315,7 @@
            	print json_encode(array("Exito",$html,$resultado[4]));
 
 		}else{
-			print json_decode(array("Error",$resultado));
+			//print json_decode(array("Error",$resultado));
 		}
 		
 	}else if (isset($_POST['consultar_datos_relleno']) && $_POST['consultar_datos_relleno']=="si_consultalos") {
@@ -355,7 +355,7 @@
            	print json_encode(array("Exito",$html,$resultado[4]));
 
 		}else{
-			print json_decode(array("Error",$resultado));
+			//print json_decode(array("Error",$resultado));
 		}
 		
 	}
