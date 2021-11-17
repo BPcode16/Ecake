@@ -34,11 +34,18 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_actualizalo
         exit();
     }
 } else if (isset($_POST['eliminar_datos']) && $_POST['eliminar_datos'] == "si_eliminalo") {
-    $array = array(
-        "table" => "tbl_presentacion",
-        "idproducto" => $_POST['idproducto']
-    );
-    $resultado = $modelo->eliminar_generica($array);
+    if ($_POST['idproducto'] == 0) {
+        $sql = "DELETE FROM tbl_presentacion";
+
+        $resultado = $modelo->insertar_SQL($sql);
+    } else {
+        $array = array(
+            "table" => "tbl_presentacion",
+            "idproducto" => $_POST['idproducto']
+        );
+        $resultado = $modelo->eliminar_generica($array);
+    }
+    
     if ($resultado[0] == '1') {
         print json_encode(array("Exito", $_POST, $resultado));
         exit();
@@ -93,7 +100,6 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_actualizalo
                             <td>' . $row['presentaciones'] . '</td>
                             <td>
                             <a href="javascript:void(0)" class="btn_editar" data-id="' . $row['idproducto'] . '" style="margin-right: 25px;"><i class="mdi mdi-lead-pencil" title="Editar producto"></i></a>
-                            <a href="javascript:void(0)" class="text-danger btn_eliminar"  data-id="' . $row['idproducto'] . '"><i class="mdi mdi-delete" title="Eliminar producto"></i></a>
                             </td> 
                         </tr>';
         }
@@ -140,13 +146,13 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_actualizalo
 
                 if ($row['estado'] == 1) {
                     $html_tr2 .= '
-                                <button type="button" class="btn btn-sm btn-success" onclick="estadoActivo(' . $row['idpresentacion'] . ','.$row['estado'].')">
+                                <button type="button" class="btn btn-sm btn-success" onclick="estadoActivo(' . $row['idpresentacion'] . ',' . $row['estado'] . ')">
                                 <span class="d-none d-sm-block">Activo</span>
                                 </button>
                                 ';
                 } else {
                     $html_tr2 .= '
-                                <button type="button" class="btn btn-sm btn-danger" onclick="estadoActivo(' . $row['idpresentacion'] . ', '.$row['estado'].')">
+                                <button type="button" class="btn btn-sm btn-danger" onclick="estadoActivo(' . $row['idpresentacion'] . ', ' . $row['estado'] . ')">
                                 <span class="d-none d-sm-block">Inactivo</span>
                                 </button>
                                 ';
@@ -181,13 +187,11 @@ if (isset($_POST['ingreso_datos']) && $_POST['ingreso_datos'] == "si_actualizalo
             $html .= '</tbody>
             		</table>';
         } else {
-            $html .= '<h6>No tiene presentaciones.</h6>
-                        ';
+            $html .= '<h6>No tiene presentaciones.</h6>';
         }
         if ($idproducto == -1) {
 
-            $html = '<h6>Seleccione un producto.</h6>
-                        ';
+            $html = '<h6>Seleccione un producto.</h6>';
         }
         print json_encode(array("Exito", $html, $resultado[4]));
     } else {

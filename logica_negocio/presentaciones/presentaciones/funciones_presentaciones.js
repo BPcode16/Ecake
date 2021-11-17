@@ -161,7 +161,7 @@ function estadoActivo(idpresentacion, idestado) {
   })
     .done(function (json) {
       if (json[0] == "Exito") {
-        console.log("SQL PARA ESTADOS:",json[2]);
+        console.log("SQL PARA ESTADOS:", json[2]);
 
         CargarDatos("si_consultalos");
         actualizar_tbl();
@@ -215,6 +215,32 @@ function recargarLista($id) {
     success: function (r) {
       $("#select2lista").html(r);
     },
+  });
+}
+
+function eliminarTodo() {
+  var iddepto = document.getElementsByName("lista2")[0].value;
+
+  Swal.fire({
+    title: "¿Desea eliminar TODAS las presentaciones para este producto?",
+    text: "¡No podra recuperar la información!",
+    icon: "warning",
+    width: 700,
+    toast: true,
+    showCancelButton: true,
+    cancelButtonText: "Cancelar",
+    confirmButtonColor: "#6c757d",
+    cancelButtonColor: "#dc3545",
+    confirmButtonText: "Si, Eliminar.",
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      toastify("Presentaciones eliminadas correctamente.", 1);
+      eliminar(iddepto);
+      actualizar_tbl();
+    } else if (result.isDenied) {
+      Swal.fire("Accion cancelada por el usuario", "", "info");
+    }
   });
 }
 
@@ -321,6 +347,11 @@ function CargarDatos(consulta, idprod) {
         if (consulta == "si_tabla") {
           $("#aqui_tabla2").empty().html(json[1]); //llena la tabla del modal
           $("#tabla_presentaciones").DataTable(); //le da el formato
+          if (json[1] == "<h6>No tiene presentaciones.</h6>" || json[1] == "<h6>Seleccione un producto.</h6>") {
+            document.getElementById("btnElim").disabled = true;
+          } else {
+            document.getElementById("btnElim").disabled = false;
+          }
         } else {
           $("#aqui_tabla").empty().html(json[1]); //llena la tabla
 
