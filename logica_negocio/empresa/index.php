@@ -98,10 +98,10 @@
                               <input type="text" class="form-control" placeholder="9999-9999" id="telefono" name="telefono"  maxlength="9"/>
                             </div>
                           </div>
-                          <div class="form-group">
-                            <label>Logo</label>
+                          <div class="form-group" type="hidden">
+                            
                             <div>
-                              <input type="text" class="form-control" id="logo" name="logo" />
+                              <input type="hidden" class="form-control" id="logo" name="logo" />
                             </div>
                           </div>
                         </div>
