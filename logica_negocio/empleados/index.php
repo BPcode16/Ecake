@@ -234,7 +234,6 @@
 
   <script src="../../public/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
-  <script src="../validaciones/logo.js"></script>
   <script src="funciones_empleado.js"></script>
   <script src="../validaciones/validar_input.js"></script>
 

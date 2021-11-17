@@ -1,5 +1,3 @@
-var idImgGlobal = 1;
-
 $(function() {
 
     $.mask.definitions['~'] = '[2,6,7]';
@@ -7,110 +5,77 @@ $(function() {
 
     console.log("JQuery si esta funcionando");
     CargarDatos();
-    CargarImagen();
-    CargarImagenLogo();
 
-});
 
-//edito Imagen
-$('#buttonEdit').click(function() {
-    var fileImage = $('#fileImage').val();
-    var nombre = $('#nombre').val();
-    var email = $('#email').val();
-    var telefono = $('#telefono').val();
-    var horario = $('#horario').val();
-    var direccion = $('#direccion').val();
+    $(document).on("submit", "#formulario_registro", function(e) {
+        e.preventDefault();
+        var reg = /^[A-Z0-9._%+-]+@([A-Z0-9-]+.)+[A-Z]{2,4}$/i;
 
-    $('#nombre').css("background", "#fff");
-    $('#email').css("background", "#fff");
-    $('#telefono').css("background", "#fff");
-    $('#horario').css("background", "#fff");
-    $('#direccion').css("background", "#fff");
+        var nombreAdd = $('#nombre').val();
+        var emailAdd = $('#email').val();
+        var telefonoAdd = $('#telefono').val();
+        var horarioAdd = $('#horario').val();
+        //var logoAdd = $('#logo').val();
+        var direccionAdd = $('#direccion').val();
 
-    if (nombre.length < 3) {
-        toastify("Campo Nombre vacío", 2);
-        $('#nombre').focus();
-        $('#nombre').css("background", "#fb6e893b").fadeIn(3000);
-    } else if (email.length < 3 && !reg.test(email)) {
-        toastify("Campo email vacío", 2);
         $('#nombre').css("background", "#fff");
-        $('#email').focus();
-        $('#email').css("background", "#fb6e893b").fadeIn(3000);
-    } else if (soloCorreo(email) == false) {
-        toastify("Ingrese un email correcto", 2);
-        $('#nombre').css("background", "#fff");
-        $('#email').focus();
-        $('#email').css("background", "#fb6e893b").fadeIn(3000);
-    } else if (horario.length > 200) {
-        toastify("Campo horario sobrepaso el limite de 200 caracteres", 2);
         $('#email').css("background", "#fff");
-        $('#horario').focus();
-        $('#horario').css("background", "#fb6e893b").fadeIn(3000);
-    } else if (direccion.length > 200) {
-        toastify("Campo horario sobrepaso el limite de 200 caracteres", 2);
+        $('#telefono').css("background", "#fff");
         $('#horario').css("background", "#fff");
-        $('#direccion').focus();
-        $('#direccion').css("background", "#fb6e893b").fadeIn(3000);
-    } else {
-        if (fileImage != '') { // si actualizo la imagen
-            var form_data = new FormData();
-            var opciones = "editoImg";
-            form_data.append('opciones', opciones);
-            form_data.append('nombre', nombre);
-            form_data.append('email', email);
-            form_data.append('telefono', telefono);
-            form_data.append('horario', horario);
-            form_data.append('direccion', direccion);
-            form_data.append('idImgGlobal', idImgGlobal);
-            form_data.append("fileImage", document.getElementById('fileImage').files[0]);
-            console.log("imagen: ", document.getElementById('fileImage').files[0]);
+        //$('#logo').css("background", "#fff");
+        $('#direccion').css("background", "#fff");
 
+        if (nombreAdd.length < 3) {
+            toastify("Campo Nombre vacío", 2);
+            $('#nombre').focus();
+            $('#nombre').css("background", "#fb6e893b").fadeIn(3000);
+        } else if (emailAdd.length < 3 && !reg.test(emailAdd)) {
+            toastify("Campo email vacío", 2);
+            $('#nombre').css("background", "#fff");
+            $('#email').focus();
+            $('#email').css("background", "#fb6e893b").fadeIn(3000);
+        } else if (soloCorreo(emailAdd) == false) {
+            toastify("Ingrese un email correcto", 2);
+            $('#nombre').css("background", "#fff");
+            $('#email').focus();
+            $('#email').css("background", "#fb6e893b").fadeIn(3000);
+        } else if (horarioAdd.length > 200) {
+            toastify("Campo horario sobrepaso el limite de 200 caracteres", 2);
+            $('#email').css("background", "#fff");
+            $('#horario').focus();
+            $('#horario').css("background", "#fb6e893b").fadeIn(3000);
+        } else if (direccionAdd.length > 200) {
+            toastify("Campo horario sobrepaso el limite de 200 caracteres", 2);
+            $('#horario').css("background", "#fff");
+            $('#direccion').focus();
+            $('#direccion').css("background", "#fb6e893b").fadeIn(3000);
+        } else {
+            var datos = $("#formulario_registro").serialize();
             $.ajax({
-                url: "json_empresa.php",
+                dataType: "json",
                 method: "POST",
-                data: form_data,
-                contentType: false,
-                processData: false,
-                success: function(data) {
-                    console.log("entreo a imganes con");
-                }
-            });
-        } else { //edito Sin imagen.
-            var nombre = $('#nombre').val();
-            var email = $('#email').val();
-            var telefono = $('#telefono').val();
-            var horario = $('#horario').val();
-            var direccion = $('#direccion').val();
-            var opciones = "editoSinImg";
-            $.ajax({
                 url: "json_empresa.php",
-                method: "POST",
-                data: {
-                    idImgGlobal: idImgGlobal,
-                    nombre: nombre,
-                    email: email,
-                    telefono: telefono,
-                    horario: horario,
-                    direccion: direccion,
-                    opciones: opciones
-                },
-                success: function(data) {
-                    //$('#data').html(data);
+                data: datos,
+                success: function(json) {
+                    if (json[0] == "Exito") {
+                        toastify("¡Acción Realizada!\nDatos guardados con exito", 1);
+                        CargarDatos();
+                        $('#nombre').css("background", "#4AC18E3b").fadeIn(3000);
+                        $('#email').css("background", "#4AC18E3b").fadeIn(3000);
+                        $('#telefono').css("background", "#4AC18E3b").fadeIn(3000);
+                        $('#horario').css("background", "#4AC18E3b").fadeIn(3000);
+                        $('#logo').css("background", "#4AC18E3b").fadeIn(3000);
+                        $('#direccion').css("background", "#4AC18E3b").fadeIn(3000);
+
+                        esperar();
+                    } else {
+                        toastify("¡Acción Fallida!\nDatos no se pudieron modificar", 2);
+                    }
+
                 }
             });
         }
-        toastify("¡Acción Realizada!\nDatos guardados con exito", 1);
-        CargarDatos();
-        CargarImagen();
-        CargarImagenLogo();
-        $('#nombre').css("background", "#4AC18E3b").fadeIn(3000);
-        $('#email').css("background", "#4AC18E3b").fadeIn(3000);
-        $('#telefono').css("background", "#4AC18E3b").fadeIn(3000);
-        $('#horario').css("background", "#4AC18E3b").fadeIn(3000);
-        $('#logo').css("background", "#4AC18E3b").fadeIn(3000);
-        $('#direccion').css("background", "#4AC18E3b").fadeIn(3000);
-        esperar();
-    }
+    });
 });
 
 function esperar() {
@@ -127,7 +92,7 @@ function esperar() {
 
 function CargarDatos() {
     console.log("Entro a cargardatos ");
-    var datos = { "mostrar": "si_consultalos" };
+    var datos = { "consultar_datos": "si_consultalos" };
     $.ajax({
         dataType: "json",
         method: "POST",
@@ -135,51 +100,13 @@ function CargarDatos() {
         data: datos,
         success: function(json) {
             if (json[0] == "Exito") {
-                console.log("DATOS CARGADOS ", json[2]);
+                console.log("DATOS CARGADOS ",json[2]);
                 $('#llave_empresa').val(json[2]['idempresa']);
                 $('#nombre').val(json[2]['nombre']);
                 $('#email').val(json[2]['email']);
                 $('#horario').val(json[2]['horario']);
                 $('#telefono').val(json[2]['telefono']);
                 $('#direccion').val(json[2]['direccion']);
-            } else {
-                toastify("¡Acción Fallida!\nRegistro no se pudo encontrar", 2);
-            }
-
-        }
-    });
-}
-
-function CargarImagen() {
-    console.log("Entro a cargarimagen ");
-    var datos = { "consultar_datos": "si_imagen" };
-    $.ajax({
-        dataType: "json",
-        method: "POST",
-        url: "json_empresa.php",
-        data: datos,
-        success: function(json) {
-            if (json[0] == "Exito") {
-                $('#data').html(json[1]);
-            } else {
-                toastify("¡Acción Fallida!\nRegistro no se pudo encontrar", 2);
-            }
-
-        }
-    });
-}
-
-function CargarImagenLogo() {
-    console.log("Entro a cargarimagen ");
-    var datos = { "consultar_datos": "si_imagenLogo" };
-    $.ajax({
-        dataType: "json",
-        method: "POST",
-        url: "json_empresa.php",
-        data: datos,
-        success: function(json) {
-            if (json[0] == "Exito") {
-                $('#dataLogo').html(json[1]);
             } else {
                 toastify("¡Acción Fallida!\nRegistro no se pudo encontrar", 2);
             }

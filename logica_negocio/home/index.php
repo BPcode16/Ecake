@@ -520,7 +520,7 @@
 
         <!-- Page specific js -->
         <script src="../../public/assets/pages/dashboard.js"></script>
-        <script src="../validaciones/logo.js"></script>
+
         <!-- App js -->
         <script src="../../public/assets/js/app.js"></script>
     </body>

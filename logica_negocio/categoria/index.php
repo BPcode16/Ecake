@@ -180,7 +180,7 @@
 
         
 
-        <script src="../validaciones/logo.js"></script>
+
         <script src="funciones_categoria.js"></script>
         <script src="../validaciones/validar_input.js"></script>
 

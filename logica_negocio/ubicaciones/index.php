@@ -201,8 +201,6 @@
   <!-- Validaciones -->
   <script src="../validaciones/validar_input.js"></script>
 
-  <script src="../validaciones/logo.js"></script>
-
 </body>
 
 </html>

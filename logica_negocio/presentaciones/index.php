@@ -202,10 +202,10 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-  <script src="../validaciones/logo.js"></script>
   <script src="funciones_presentaciones.js"></script>
   <!-- Validaciones -->
   <script src="../validaciones/validar_input.js"></script>
+
 
 </body>
 
