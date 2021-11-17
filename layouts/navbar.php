@@ -5,7 +5,8 @@
        <div class="topbar-left">
            <div class="">
                <!--<a href="index.php" class="logo text-center">Admiria</a>-->
-               <a href="index.php" class="logo"><img src="../../public/assets/images/logo-sm.png" height="36" alt="logo"></a>
+=======
+               <div id="dataLogo"> </div>
            </div>
        </div>
 
