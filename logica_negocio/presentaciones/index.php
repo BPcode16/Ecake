@@ -183,7 +183,7 @@
 
   <!-- App js -->
   <script src="../../public/assets/js/app.js"></script>
-
+  <script src="../validaciones/logo.js"></script>
   <!-- Parsley js -->
   <script type="text/javascript" src="../../public/plugins/parsleyjs/parsley.min.js"></script>
 

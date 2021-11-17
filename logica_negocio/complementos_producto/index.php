@@ -259,6 +259,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script src="funciones_complementos.js"></script>
+        <script src="../validaciones/logo.js"></script>
         <script src="../validaciones/validar_input.js"></script>
 
     </body>

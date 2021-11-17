@@ -272,6 +272,7 @@
 
     <script src="funciones_producto.js" type="text/javascript" charset="utf-8"></script>
     <script src="../validaciones/validar_input.js"></script>
+    <script src="../validaciones/logo.js"></script>
 </body>
 
 </html>

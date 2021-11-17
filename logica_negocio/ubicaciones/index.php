@@ -197,7 +197,7 @@
 
 
   <script src="funciones_ubicacion.js"></script>
-
+  <script src="../validaciones/logo.js"></script>
   <!-- Validaciones -->
   <script src="../validaciones/validar_input.js"></script>
 
