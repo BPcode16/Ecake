@@ -249,7 +249,6 @@
 				
 				$html_tr.='<tr>
                             <td>'.$row['sabortorta'].'</td>
-                            <td>'.$row['estado'].'</td>
                             <td>
                             <a href="javascript:void(0)" class="btn_editar_sabor" data-id="'.$row['idsabortorta'].'" style="margin-right: 25px;"><i class="mdi mdi-lead-pencil" title="Editar producto"></i></a>
                             <a href="javascript:void(0)" class="text-danger btn_eliminar_sabor"  data-id="'.$row['idsabortorta'].'"><i class="mdi mdi-delete" title="Eliminar producto"></i></a>
@@ -262,7 +261,6 @@
                         <thead>
                         <tr>
                             <th>Sabor de la torta</th>
-                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                         </thead>
@@ -289,7 +287,6 @@
 				
 				$html_tr.='<tr>
                             <td>'.$row['saborremojo'].'</td>
-                            <td>'.$row['estado'].'</td>
                             <td>
                             <a href="javascript:void(0)" class="btn_editar_remojo" data-id="'.$row['idremojo'].'" style="margin-right: 25px;"><i class="mdi mdi-lead-pencil" title="Editar producto"></i></a>
                             <a href="javascript:void(0)" class="text-danger btn_eliminar_remojo"  data-id="'.$row['idremojo'].'"><i class="mdi mdi-delete" title="Eliminar producto"></i></a>
@@ -302,7 +299,6 @@
                         <thead>
                         <tr>
                             <th>Remojo</th>
-                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                         </thead>
@@ -329,7 +325,6 @@
 				
 				$html_tr.='<tr>
                             <td>'.$row['saborrelleno'].'</td>
-                            <td>'.$row['estado'].'</td>
                             <td>
                             <a href="javascript:void(0)" class="btn_editar_relleno" data-id="'.$row['idrelleno'].'" style="margin-right: 25px;"><i class="mdi mdi-lead-pencil" title="Editar producto"></i></a>
                             <a href="javascript:void(0)" class="text-danger btn_eliminar_relleno"  data-id="'.$row['idrelleno'].'"><i class="mdi mdi-delete" title="Eliminar producto"></i></a>
@@ -342,7 +337,6 @@
                         <thead>
                         <tr>
                             <th>Relleno</th>
-                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                         </thead>

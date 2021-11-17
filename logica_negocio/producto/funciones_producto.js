@@ -133,9 +133,13 @@ $(document).on("submit", "#formulario_registro", function(e) {
                     }
 
                     Limpiar();
+                    $function();
                     CargarDatos();
+                    //something_happens();
                 } else {
                     CargarDatos();
+                    Limpiar();
+                    //something_happens();
                 }
             })
             .fail(function() {})
@@ -193,6 +197,7 @@ function eliminar(id) {
             if (json[0] == "Exito") {
                 toastify("¡Acción Realiza!\nRegistro eliminado con exito", 1);
                 CargarDatos();
+                //something_happens();
             }
         })
         .fail(function() {})
@@ -231,12 +236,16 @@ function subir_archivo(archivo, idproducto) {
                 $("#md_registrar_producto").modal("show");
                 toastify("¡Acción Realizada!\nRegistro guardado con exito", 1);
                 CargarDatos();
+                Limpiar();
+                //something_happens();
             } else {
                 console.log("Este es el error que devuelve json", json[0]);
                 Swal.fire("¡Error!", "No ha sido posible registrar la imagen", "error");
                 $("#md_registrar_producto").modal("show");
 
                 CargarDatos();
+                Limpiar();
+                //something_happens();
             }
         },
     });
@@ -301,7 +310,7 @@ function validar_archivo(file) {
                 $("#error_en_la_imagen").css("display", "none");
                 //Aqui verificamos que la imagen no pase del tamaño establecido
 
-                if (tamanio >= 5000) {
+                if (tamanio >= 3000) {
                     console.log("error tamanio");
                     $("#error_en_la_imagen_t").css("display", "block"); //block miestra la variable que esta en el index
                 } else {
@@ -330,7 +339,7 @@ function Limpiar() {
     $("#tiempo").val("");
     $("#descrip").val("");
     $("#relleno").val("");
-    $("#imagen_producto").val("");
+    $("#imagen_producto").value = "";
     $("#categoria").css("background", "#fff");
     $("#nombre").css("background", "#fff");
     $("#tiempo").css("background", "#fff");
@@ -339,4 +348,5 @@ function Limpiar() {
     $("#descrip").css("background", "#fff");
     $("#relleno").css("background", "#fff");
     $("#imagen_producto").css("background", "#fff");
+    //something_happens();
 }

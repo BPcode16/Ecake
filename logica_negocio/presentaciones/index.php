@@ -42,7 +42,7 @@
 
               <div class="col-md-6 col-xl-6">
                 <div class="mini-stat clearfix bg-white">
-                  <span class="mini-stat-icon bg-blue-grey mr-0 float-right"><i class=" mdi mdi-account-plus"></i></span>
+                  <span class="mini-stat-icon bg-blue-grey mr-0 float-right"><i class=" mdi mdi-cake"></i></span>
                   <div class="mini-stat-info">
                     <span id="usuarios_registrados" class="counter text-blue-grey">
                       <font style="vertical-align: inherit;">
@@ -62,7 +62,7 @@
 
               <div class="col-md-6 col-xl-6" id="registrar_usuario" onclick="CargarDatos('si_tabla',-1), cancel(), limpiar()" style="cursor: pointer;">
                 <div class="mini-stat clearfix bg-white">
-                  <span class="mini-stat-icon bg-teal mr-0 float-right"><i class=" mdi mdi-account-circle"></i></span>
+                  <span class="mini-stat-icon bg-teal mr-0 float-right"><i class=" mdi mdi-plus-circle"></i></span>
                   <div class="mini-stat-info">
                     <span class="counter text-teal">
                       <font style="vertical-align: inherit;">
@@ -111,17 +111,6 @@
         <div class="modal-content">
           <div class="modal-header">
             <h6 class="modal-title" id="exampleModalLabel">Registra nuevas presentaciones para tus productos<br>
-              <div class="alert alert-danger mb-0" role="alert">
-                <strong>
-                  <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">¡Importante! </font>
-                  </font>
-                </strong>
-                <font style="vertical-align: inherit;">
-                  <font style="vertical-align: inherit;">Los cambios marcados con * son obligatorios.
-                  </font>
-                </font>
-              </div>
             </h6>
 
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -152,7 +141,8 @@
                   </div>
                 </div>
               </div>
-              <div class="modal-footer">
+              <div class="modal-footer d-flex">
+                <button type="button" onclick="eliminarTodo()" id="btnElim" name="btnElim" class="btn btn-secondary btn-sm mr-auto p-2">Eliminar todo.</button>
                 <button type="button" onclick="cancel()" id="boton2" value="1" name="boton2" class="btn btn-secondary">Cerrar</button>
                 <button type="submit" id="boton1" value="1" name="boton1" class="btn btn-primary">Agregar</button>
               </div>

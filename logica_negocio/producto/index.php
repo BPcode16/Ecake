@@ -123,6 +123,7 @@
               <form name="formulario_registro" id="formulario_registro">
                 <input type="hidden" id="ingreso_datos" name="ingreso_datos" value="si_registro">
                 <input type="hidden" id="llave_producto" name="llave_producto" value="si_registro">
+                <input type="hidden" id="ruta" name="ruta" value="">
                 <div class="row">
 
                   <div class="col-md-6">
@@ -137,7 +138,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Nombre del pastel</label>
-                      <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ingrese el nombre de su producto" maxlength="80" />
+                      <input type="text" autocomplete="OFF" name="nombre" id="nombre" class="form-control" placeholder="Ingrese el nombre de su producto" maxlength="80" />
                     </div>
                   </div>
 
@@ -201,7 +202,7 @@
                       <label>Seleccione la imagen de tu pastel</label>
                       <input id="imagen_producto" name="imagen_producto" data-buttonText="Seleccionar" type="file" class="filestyle" data-buttonname="btn-secondary">
                       <label style="display:none;font-size: 12px; list-style: none; color: #ea553d; margin-top: 5px;" id="error_en_la_imagen">El formato de la imagen no es valido</label>
-                      <label style="display:none;font-size: 12px; list-style: none; color: #ea553d; margin-top: 5px;" id="error_en_la_imagen_t">Ingrese una imagen menor a 5MB</label>
+                      <label style="display:none;font-size: 12px; list-style: none; color: #ea553d; margin-top: 5px;" id="error_en_la_imagen_t">Ingrese una imagen menor a 3MB</label>
 
                     </div>
                   </div>
