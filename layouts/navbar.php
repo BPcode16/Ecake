@@ -5,9 +5,7 @@
        <div class="topbar-left">
            <div class="">
                <!--<a href="index.php" class="logo text-center">Admiria</a>-->
-               <div id="dataLogo">
-                            
-                </div>
+               <div id="dataLogo"> </div>
            </div>
        </div>
 
