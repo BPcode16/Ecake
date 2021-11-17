@@ -190,7 +190,6 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-        <script src="../validaciones/logo.js"></script>
         <script src="funciones_usuarios.js"></script>
 
 
